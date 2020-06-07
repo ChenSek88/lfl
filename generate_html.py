@@ -117,7 +117,7 @@ with open('temp_tables/players_table') as table:
 
 	td = players_table.find_all('td')
 	for i in td:
-		#i['class'] = 'text-center'
+		i['class'] = 'text-center'
 		span = i.find_all('span')
 		for s in span:
 			s.extract()
