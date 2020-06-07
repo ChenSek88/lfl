@@ -44,8 +44,8 @@ with open('temp_tables/tournament_table') as table:
 		del img['align']
 		img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
 		
-	href = tournament_table.find_all('a')
-	for i in href:
+	a = tournament_table.find_all('a')
+	for i in a:
 		i['href'] = 'http://lfl.ru' + i['href']
 		i['target'] = '_blank'
 		i['class'] = 'text-body'
@@ -61,9 +61,7 @@ with open('temp_tables/tournament_table') as table:
 		td = i.find_all('td')[1]
 		td.extract()
 		td = i.find_all('td')[1]
-		td['class'] = 'text-left'
-		
-	for i in tr:
+		td['class'] = 'team text-left'	
 		del i['class']
 		i['class'] = 'pos_' + str(pos)
 		pos = pos + 1
@@ -90,8 +88,8 @@ with open('temp_tables/calendar_table') as table:
 	for img in images:
 		img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
 
-	href = calendar_table.find_all('a')
-	for i in href:
+	a = calendar_table.find_all('a')
+	for i in a:
 		i['href'] = 'http://lfl.ru' + i['href']
 		i['class'] = 'text-body'
 		i['target'] = '_blank'
@@ -106,13 +104,8 @@ with open('temp_tables/calendar_table') as table:
 with open('temp_tables/players_table') as table:
 	players_table = BeautifulSoup(table, 'lxml').find('tbody')
 
-	tr = players_table.find_all('tr')
-	for i in tr:
-		i['class'] = 'table-light'
-
-
-	href = players_table.find_all('a')
-	for i in href:
+	a = players_table.find_all('a')
+	for i in a:
 		i['href'] = 'http://lfl.ru' + i['href']
 		i['class'] = 'text-body'
 		i['target'] = '_blank'
@@ -124,19 +117,19 @@ with open('temp_tables/players_table') as table:
 
 	td = players_table.find_all('td')
 	for i in td:
+		#i['class'] = 'text-center'
 		span = i.find_all('span')
 		for s in span:
 			s.extract()
 
 
+	tr = players_table.find_all('tr')
+	for i in tr:
+		i['class'] = 'table-light'
+		
+	
 html = open('template.html').read()
 template = Template(html)
-
-#tournament = open('temp_tables/tournament_table').read()
-#calendar = open('temp_tables/calendar_table').read()
-#results = open('temp_tables/results_table').read()
-#players = open('temp_tables/players_table').read()
-
 
 
 with open("index.html", "w") as index:
