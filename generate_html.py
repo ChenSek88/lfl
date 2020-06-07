@@ -39,12 +39,10 @@ get_table('temp_tables/players_table', players_stats_url)
 
 with open('temp_tables/tournament_table') as table:
 	tournament_table = BeautifulSoup(table, 'lxml').find('tbody')
-	#images = tournament_table.find_all('img')
-	for td in tournament_table:
-		img = td.find_all('img')
-		print img
-		#del img['align']
-		#img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
+	images = tournament_table.find_all('img')
+	for img in images:
+		del img['align']
+		img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
 		
 	href = tournament_table.find_all('a')
 	for i in href:
@@ -52,19 +50,18 @@ with open('temp_tables/tournament_table') as table:
 		i['target'] = '_blank'
 		i['class'] = 'text-body'
 	
-	#td = tournament_table.find_all('td')
-	#for i in td:
-	#	i['class'] = 'text-center'
+	td = tournament_table.find_all('td')
+	for i in td:
+		i['class'] = 'text-center'
 
 
 	pos = 1
 	tr = tournament_table.find_all('tr')
 	for i in tr:
 		td = i.find_all('td')[1]
-		#print td
 		td.extract()
-		#td = i.find_all('td')[1]
-		#td['class'] = 'text-left'
+		td = i.find_all('td')[1]
+		td['class'] = 'text-left'
 		
 	for i in tr:
 		del i['class']
