@@ -79,10 +79,15 @@ with open('temp_tables/tournament_table') as table:
 
 with open('temp_tables/calendar_table') as table:
 	calendar_table = BeautifulSoup(table, 'lxml').find('tbody')
-
 	tr = calendar_table.find_all('tr')
+	td_list = []
 	for i in tr:
 		i['class'] = 'table-light'
+		td = i.find_all('td')
+		for i in td:
+			td_list.append((i.get_text()))
+	print td_list
+
 
 	images = calendar_table.find_all('img')
 	for img in images:
@@ -104,6 +109,14 @@ with open('temp_tables/calendar_table') as table:
 with open('temp_tables/players_table') as table:
 	players_table = BeautifulSoup(table, 'lxml').find('tbody')
 
+	tr = players_table.find_all('tr')
+	for i in tr:
+		i['class'] = 'table-light'
+
+	tour_header = players_table.find_all(attrs={"class":"tour-header"})
+	for i in tour_header:
+		i['class'] = 'amplua text-center font-weight-bold'
+
 	a = players_table.find_all('a')
 	for i in a:
 		i['href'] = 'http://lfl.ru' + i['href']
@@ -117,16 +130,10 @@ with open('temp_tables/players_table') as table:
 
 	td = players_table.find_all('td')
 	for i in td:
-		i['class'] = 'text-center'
 		span = i.find_all('span')
 		for s in span:
-			s.extract()
+			s.extract()	
 
-
-	tr = players_table.find_all('tr')
-	for i in tr:
-		i['class'] = 'table-light'
-		
 	
 html = open('template.html').read()
 template = Template(html)
