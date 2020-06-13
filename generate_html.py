@@ -38,7 +38,8 @@ get_table('temp_tables/players_table', players_stats_url)
 
 
 with open('temp_tables/tournament_table') as table:
-	tournament_table = BeautifulSoup(table, 'lxml').find('tbody')
+	soup = BeautifulSoup(table, 'lxml')
+	tournament_table = soup.find('tbody')
 	images = tournament_table.find_all('img')
 	for img in images:
 		del img['align']
@@ -78,17 +79,8 @@ with open('temp_tables/tournament_table') as table:
 
 
 with open('temp_tables/calendar_table') as table:
-	calendar_table = BeautifulSoup(table, 'lxml').find('tbody')
-	tr = calendar_table.find_all('tr')
-	td_list = []
-	for i in tr:
-		i['class'] = 'table-light'
-		td = i.find_all('td')
-		for i in td:
-			td_list.append((i.get_text()))
-	print td_list
-
-
+	soup = BeautifulSoup(table, 'lxml')
+	calendar_table = soup.find('tbody')
 	images = calendar_table.find_all('img')
 	for img in images:
 		img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
@@ -106,8 +98,39 @@ with open('temp_tables/calendar_table') as table:
 		del i['width']
 
 
+	tr = calendar_table.find_all('tr')
+	tour_list = []
+	for i in tr:
+		i['class'] = 'table-light text-center text-nowrap'
+		tour = i.find('td')
+		owners = i.find(attrs={"class": "right_align_table"})
+		new_tag = soup.new_tag('br')
+		date = i.find_all('td')[4]
+		date.append(i.find_all('td')[1].get_text())
+		date.insert(4, new_tag)
+		date.append(i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text())
+		guests = i.find(attrs={"class": "left_align_table"})
+		#tour_list.append(tour)
+		#tour_list.append(owners)
+		#tour_list.append(date)
+		#tour_list.append(guests)
+		td = i.find_all('td')[1]
+		td.extract()
+		td = i.find_all('td')[1]
+		td.extract()
+		td = i.find_all('td')[4]
+		td.extract()
+		td = i.find_all('td')[4]
+		td.extract()
+	#print(tour_list)
+
+
+
+	
+
 with open('temp_tables/players_table') as table:
-	players_table = BeautifulSoup(table, 'lxml').find('tbody')
+	soup = BeautifulSoup(table, 'lxml')
+	players_table = soup.find('tbody')
 
 	tr = players_table.find_all('tr')
 	for i in tr:
