@@ -110,10 +110,6 @@ with open('temp_tables/calendar_table') as table:
 		date.insert(4, new_tag)
 		date.append(i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text())
 		guests = i.find(attrs={"class": "left_align_table"})
-		#tour_list.append(tour)
-		#tour_list.append(owners)
-		#tour_list.append(date)
-		#tour_list.append(guests)
 		td = i.find_all('td')[1]
 		td.extract()
 		td = i.find_all('td')[1]
@@ -122,11 +118,7 @@ with open('temp_tables/calendar_table') as table:
 		td.extract()
 		td = i.find_all('td')[4]
 		td.extract()
-	#print(tour_list)
 
-
-
-	
 
 with open('temp_tables/players_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
@@ -153,11 +145,12 @@ with open('temp_tables/players_table') as table:
 
 	td = players_table.find_all('td')
 	for i in td:
+		if i.has_attr('class') == False:
+			i['class'] = 'text-center'
 		span = i.find_all('span')
 		for s in span:
 			s.extract()	
 
-	
 html = open('template.html').read()
 template = Template(html)
 
