@@ -44,17 +44,16 @@ with open('temp_tables/tournament_table') as table:
 	for img in images:
 		del img['align']
 		img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
-		
+
 	a = tournament_table.find_all('a')
 	for i in a:
 		i['href'] = 'http://lfl.ru' + i['href']
 		i['target'] = '_blank'
 		i['class'] = 'text-body'
-	
+
 	td = tournament_table.find_all('td')
 	for i in td:
 		i['class'] = 'text-center'
-
 
 	pos = 1
 	tr = tournament_table.find_all('tr')
@@ -65,7 +64,7 @@ with open('temp_tables/tournament_table') as table:
 		td['class'] = 'team text-left'	
 		del i['class']
 		i['class'] = 'pos_' + str(pos)
-		pos = pos + 1
+		pos += 1
 		if i['class'] in up:
 			i['class'] = 'table-success'
 		elif i['class'] in up2:
@@ -102,14 +101,14 @@ with open('temp_tables/calendar_table') as table:
 	tour_list = []
 	for i in tr:
 		i['class'] = 'table-light text-center text-nowrap'
-		tour = i.find('td')
-		owners = i.find(attrs={"class": "right_align_table"})
+		#tour = i.find('td')
+		#owners = i.find(attrs={"class": "right_align_table"})
 		new_tag = soup.new_tag('br')
 		date = i.find_all('td')[4]
 		date.append(i.find_all('td')[1].get_text())
 		date.insert(4, new_tag)
 		date.append(i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text())
-		guests = i.find(attrs={"class": "left_align_table"})
+		#guests = i.find(attrs={"class": "left_align_table"})
 		td = i.find_all('td')[1]
 		td.extract()
 		td = i.find_all('td')[1]
@@ -127,6 +126,8 @@ with open('temp_tables/players_table') as table:
 	tr = players_table.find_all('tr')
 	for i in tr:
 		i['class'] = 'table-light'
+		del i['data-division-id']
+		del i['data-tournament-id']
 
 	tour_header = players_table.find_all(attrs={"class":"tour-header"})
 	for i in tour_header:
@@ -137,15 +138,16 @@ with open('temp_tables/players_table') as table:
 		i['href'] = 'http://lfl.ru' + i['href']
 		i['class'] = 'text-body'
 		i['target'] = '_blank'
-		
+	
 	images = players_table.find_all('img')
 	for img in images:
 		img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
 		img['class'] = (img['class'] + ['pr-1'])
+		del img['align']
 
 	td = players_table.find_all('td')
 	for i in td:
-		if i.has_attr('class') == False:
+		if not i.has_attr('class'):
 			i['class'] = 'text-center'
 		span = i.find_all('span')
 		for s in span:
