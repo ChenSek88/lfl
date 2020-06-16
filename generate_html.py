@@ -87,7 +87,7 @@ with open('temp_tables/calendar_table') as table:
 		i['target'] = '_blank'
 
 	tr = calendar_table.find_all('tr')
-	tour_list = []
+	tour_list = ""
 	for i in tr:
 		tour = i.find('td')
 		owners = i.find(attrs={"class": "right_align_table"})
@@ -97,7 +97,7 @@ with open('temp_tables/calendar_table') as table:
 		date.insert(4, new_tag)
 		date.append(i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text())
 		guests = i.find(attrs={"class": "left_align_table"})
-		tour_list.append(['<tr class="table-light text-center text-nowrap">', tour, owners, date, guests, '</tr>'])
+		tour_list += """<tr class="table-light text-center">%s %s %s %s</tr>""" % (tour, owners, date, guests)
 
 	td = calendar_table.find_all('td')
 	for i in td:
