@@ -10,6 +10,7 @@ tournament_stats_url = "http://lfl.ru/?ajax=1&method=tournament_stats_table&tour
 tournament_calendar_url= "http://lfl.ru/?ajax=1&method=tournament_calendar_table&tournament_id=0&club_id=2356&season_id=39"
 tournament_results_url = "http://lfl.ru/?ajax=1&method=tournament_resault_table&tournament_id=0&club_id=2356&season_id=39"
 players_stats_url = "http://lfl.ru/?ajax=1&method=tournament_squads_table&tournament_id=5098&club_id=2356&season_id=39"
+disqualifications_url= "http://lfl.ru/?ajax=1&mode=new_format&method=tournament_disqualifications_table&tournament_id=5098&club_id=2356&season_id=39"
 
 up = ['pos_1', 'pos_2']
 up2 = ['pos_3', 'pos_4']
@@ -29,8 +30,9 @@ def get_table(file, url):
 os.mkdir('temp_tables')
 get_table('temp_tables/tournament_table', tournament_stats_url)
 get_table('temp_tables/calendar_table', tournament_calendar_url)
-get_table('temp_tables/results_table', tournament_results_url)
 get_table('temp_tables/players_table', players_stats_url)
+get_table('temp_tables/results_table', tournament_results_url)
+get_table('temp_tables/disqual_table', disqualifications_url)
 
 
 with open('temp_tables/tournament_table') as table:
@@ -92,7 +94,6 @@ with open('temp_tables/calendar_table') as table:
 		del i['style']
 		del i['width']
 
-
 	tr = calendar_table.find_all('tr')
 	tour_list = ""
 	for i in tr:
@@ -141,12 +142,18 @@ with open('temp_tables/players_table') as table:
 		for s in span:
 			s.extract()	
 
+with open('temp_tables/disqual_table') as table:
+	soup = BeautifulSoup(table, 'lxml')
+	disqual_table = soup.find('div').get_text()
+	print(disqual_table)
+
+
 html = open('template.html').read()
 template = Template(html)
 
 
 with open("index.html", "w") as index:
 	index.write(template.render(tournament_table=tournament_table, calendar_table=tour_list,
-		players_table=players_table))
+		players_table=players_table, disqual_table=disqual_table))
 
 shutil.rmtree('temp_tables')
