@@ -92,6 +92,7 @@ with open('temp_tables/calendar_table') as table:
 		del i['style']
 		del i['width']
 
+
 	tr = calendar_table.find_all('tr')
 	tour_list = ""
 	for i in tr:
