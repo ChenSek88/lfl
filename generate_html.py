@@ -86,24 +86,24 @@ with open('temp_tables/calendar_table') as table:
 		i['class'] = 'text-body'
 		i['target'] = '_blank'
 
+	td = calendar_table.find_all('td')
+	for i in td:
+		i['class'] = 'align-middle'
+		del i['style']
+		del i['width']
+
 	tr = calendar_table.find_all('tr')
 	tour_list = ""
 	for i in tr:
-		tour = i.find('td')
-		owners = i.find(attrs={"class": "right_align_table"})
+		tour = i.find_all('td')[0]
+		owners = i.find_all('td')[3]
 		new_tag = soup.new_tag('br')
 		date = i.find_all('td')[4]
 		date.append(i.find_all('td')[1].get_text())
 		date.insert(4, new_tag)
 		date.append(i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text())
-		guests = i.find(attrs={"class": "left_align_table"})
-		tour_list += """<tr class="table-light text-center">%s %s %s %s</tr>""" % (tour, owners, date, guests)
-
-	td = calendar_table.find_all('td')
-	for i in td:
-		del i['class']
-		del i['style']
-		del i['width']
+		guests = i.find_all('td')[5]
+		tour_list += """<tr class="table-light text-center">%s %s %s %s</tr>""" % (tour, owners, date, guests)	
 
 
 with open('temp_tables/players_table') as table:
