@@ -1,10 +1,14 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 import requests
 from jinja2 import Template
 import os
 import shutil
+
+HOME_DIR = '/home/ts/lfl/'
+os.mkdir(HOME_DIR + 'temp_tables/')
+TEMP_DIR = HOME_DIR + 'temp_tables/'
 
 tournament_stats_url = "http://lfl.ru/?ajax=1&method=tournament_stats_table&tournament_id=5098&club_id=2356&season_id=39"
 tournament_calendar_url= "http://lfl.ru/?ajax=1&method=tournament_calendar_table&tournament_id=0&club_id=2356&season_id=39"
@@ -27,15 +31,14 @@ def get_table(file, url):
 		f.write(stats_table.text)
 
 
-os.mkdir('temp_tables')
-get_table('temp_tables/tournament_table', tournament_stats_url)
-get_table('temp_tables/calendar_table', tournament_calendar_url)
-get_table('temp_tables/players_table', players_stats_url)
-get_table('temp_tables/results_table', tournament_results_url)
-get_table('temp_tables/disqual_table', disqualifications_url)
+get_table(TEMP_DIR + 'tournament_table', tournament_stats_url)
+get_table(TEMP_DIR + 'calendar_table', tournament_calendar_url)
+get_table(TEMP_DIR + 'players_table', players_stats_url)
+get_table(TEMP_DIR + 'results_table', tournament_results_url)
+get_table(TEMP_DIR + 'disqual_table', disqualifications_url)
 
 
-with open('temp_tables/tournament_table') as table:
+with open(TEMP_DIR + 'tournament_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
 	tournament_table = soup.find('tbody')
 	images = tournament_table.find_all('img')
@@ -75,7 +78,7 @@ with open('temp_tables/tournament_table') as table:
 			i['class'] = 'table-light'
 
 
-with open('temp_tables/calendar_table') as table:
+with open(TEMP_DIR + 'calendar_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
 	calendar_table = soup.find('tbody')
 	images = calendar_table.find_all('img')
@@ -108,7 +111,7 @@ with open('temp_tables/calendar_table') as table:
 		tour_list += """<tr class="table-light text-center">%s %s %s %s</tr>""" % (tour, owners, date, guests)	
 
 
-with open('temp_tables/players_table') as table:
+with open(TEMP_DIR + 'players_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
 	players_table = soup.find('tbody')
 
@@ -142,18 +145,18 @@ with open('temp_tables/players_table') as table:
 		for s in span:
 			s.extract()	
 
-with open('temp_tables/disqual_table') as table:
+with open(TEMP_DIR + 'disqual_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
 	disqual_table = soup.find('div').get_text()
 	print(disqual_table)
 
 
-html = open('template.html').read()
+html = open(HOME_DIR + 'template.html').read()
 template = Template(html)
 
 
-with open("index.html", "w") as index:
+with open(HOME_DIR + "index.html", "w") as index:
 	index.write(template.render(tournament_table=tournament_table, calendar_table=tour_list,
 		players_table=players_table, disqual_table=disqual_table))
 
-shutil.rmtree('temp_tables')
+shutil.rmtree(HOME_DIR + 'temp_tables')
