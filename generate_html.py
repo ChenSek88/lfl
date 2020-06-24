@@ -148,7 +148,6 @@ with open(TEMP_DIR + 'players_table') as table:
 with open(TEMP_DIR + 'disqual_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
 	disqual_table = soup.find('div').get_text()
-	print(disqual_table)
 
 
 html = open(HOME_DIR + 'template.html').read()
