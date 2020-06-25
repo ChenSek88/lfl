@@ -1,0 +1,204 @@
+<!-- match/calendar_table: start -->																													<table class="round_table calendar calendar_result  tournament_calendar_table">
+						<thead>
+						<tr class="grey_line">
+															<th  >Тур</th>
+															<th width="60" >Дата</th>
+															<th width="50" >Время</th>
+															<th  >Хозяева</th>
+															<th width="10" >Счет</th>
+															<th  >Гости</th>
+															<th  >Лига</th>
+															<th  >Стадион</th>
+														<!--
+							<th width="60">Дата</th>
+							<th width="50">Время</th>
+							<th>Хозяева</th>
+							<th>Гости</th>
+							<th>Стадион</th>
+							-->
+						</tr>
+						</thead>
+						<tbody>
+																																									<tr class="white_line">
+														<td style="">
+								30							</td>
+																<td><a href="/match2668912">22.03.2020 (вс)</a></td>
+																<td><a href="/match2668912">13:10</a>
+															</td>
+									                                        							<td width="120" class="active right_align_table">
+														<a title="Камелот" href="/club2356">Камелот<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668912/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="left_align_table">
+														<a title="Джой" href="/club8975"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/8975_5d551c3639331.png.1565858868.png?0=1565858928&type=default" align="absmiddle"/>Джой</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td><a href="/stadium11">Бескудниково</a></td>
+															</tr>
+																																				<tr class="grey_line">
+														<td style="">
+								31							</td>
+																<td><a href="/match2668913">29.03.2020 (вс)</a></td>
+																<td><a href="/match2668913">10:50</a>
+															</td>
+									                                        							<td width="120" class="right_align_table">
+														<a title="Академика" href="/club945">Академика<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/945.png.1421413724.png?0=1541574092&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668913/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="active left_align_table">
+														<a title="Камелот" href="/club2356"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/>Камелот</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td><a href="/stadium10">Флотская 64</a></td>
+															</tr>
+																																				<tr class="white_line">
+														<td style="">
+								27							</td>
+																<td><a href="/match2668875">-</a></td>
+																<td><a href="/match2668875">-</a>
+															</td>
+									                                        							<td width="120" class="right_align_table">
+														<a title="Водник Север" href="/club3649">Водник<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/3649.png.1421422670.png?0=1541574094&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668875/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="active left_align_table">
+														<a title="Камелот" href="/club2356"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/>Камелот</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td>-</td>
+															</tr>
+																																				<tr class="grey_line">
+														<td style="">
+								32							</td>
+																<td><a href="/match2668932">-</a></td>
+																<td><a href="/match2668932">-</a>
+															</td>
+									                                        							<td width="120" class="right_align_table">
+														<a title="КДС" href="/club92">КДС<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/92_59ef2a86537a4.png.1508846211.png?0=1541574092&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668932/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="active left_align_table">
+														<a title="Камелот" href="/club2356"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/>Камелот</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td>-</td>
+															</tr>
+																																				<tr class="white_line">
+														<td style="">
+								33							</td>
+																<td><a href="/match2668934">-</a></td>
+																<td><a href="/match2668934">-</a>
+															</td>
+									                                        							<td width="120" class="active right_align_table">
+														<a title="Камелот" href="/club2356">Камелот<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668934/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="left_align_table">
+														<a title="Кредитный Отдел" href="/club5348"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/5348.png.1469478435.png?0=1541574094&type=default" align="absmiddle"/>Кредитный Отдел</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td>-</td>
+															</tr>
+																																				<tr class="grey_line">
+														<td style="">
+								34							</td>
+																<td><a href="/match2668951">-</a></td>
+																<td><a href="/match2668951">-</a>
+															</td>
+									                                        							<td width="120" class="right_align_table">
+														<a title="КроноС" href="/club4738">КроноС<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/4738.png.1464276396.png?0=1541574094&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668951/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="active left_align_table">
+														<a title="Камелот" href="/club2356"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/>Камелот</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td>-</td>
+															</tr>
+																																				<tr class="white_line">
+														<td style="">
+								35							</td>
+																<td><a href="/match2668955">-</a></td>
+																<td><a href="/match2668955">-</a>
+															</td>
+									                                        							<td width="120" class="active right_align_table">
+														<a title="Камелот" href="/club2356">Камелот<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668955/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="left_align_table">
+														<a title="Лацио" href="/club3330"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/3330_5b543e52aa597.png.1532247630.png?0=1541574094&type=default" align="absmiddle"/>Лацио</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td>-</td>
+															</tr>
+																																				<tr class="grey_line">
+														<td style="">
+								36							</td>
+																<td><a href="/match2668970">-</a></td>
+																<td><a href="/match2668970">-</a>
+															</td>
+									                                        							<td width="120" class="right_align_table">
+														<a title="Молния Север" href="/club81">Молния<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/81_jpg.png.1385498265.png?0=1541574092&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668970/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="active left_align_table">
+														<a title="Камелот" href="/club2356"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/>Камелот</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td>-</td>
+															</tr>
+																																				<tr class="white_line">
+														<td style="">
+								37							</td>
+																<td><a href="/match2668976">-</a></td>
+																<td><a href="/match2668976">-</a>
+															</td>
+									                                        							<td width="120" class="active right_align_table">
+														<a title="Камелот" href="/club2356">Камелот<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668976/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="left_align_table">
+														<a title="Национале" href="/club124"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/124.png.1421408394.png?0=1541574092&type=default" align="absmiddle"/>Национале</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td>-</td>
+															</tr>
+																																				<tr class="grey_line">
+														<td style="">
+								38							</td>
+																<td><a href="/match2668989">-</a></td>
+																<td><a href="/match2668989">-</a>
+															</td>
+									                                        							<td width="120" class="right_align_table">
+														<a title="Олимпия" href="/club2351">Олимпия<img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2351_5b586b117a4c4.png.1532521225.png?0=1541574095&type=default" align="absmiddle"/></a>
+														</td>
+																<td>
+																	<a target="_blank" href="/match2668989/empty_protocol" class="empty_protocol result">&nbsp;</a>
+																										                                							</td>
+									                                        							<td width="120" class="active left_align_table">
+														<a title="Камелот" href="/club2356"><img src="/images-thumbs/16x16/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574094&type=default" align="absmiddle"/>Камелот</a>
+														</td>
+																<td width="120"><a title="2-й дивизион А СЛ-2019/20" href="/tournament5098">2-й дивизион А</a></td>
+																<td>-</td>
+															</tr>
+																	</tbody>
+					</table>
+															<!-- match/calendar_table: end -->

@@ -4,11 +4,14 @@
 	<title>Camelot</title>
 	  <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="assets/style.css">>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+</head>
+
 	  
 <body style="background: url('assets/back.jpg') fixed;">
 
@@ -36,26 +39,22 @@
       </nav>
   </header>
 
-<div class="wrapper pt-5" style="width: 100%; max-width: 700px; margin: 0 auto">
-	<div class="container pt-4 pb-4" id="calendar">
+<div class="wrapper pt-5" style="width: 100%; max-width: 900px; margin: 0 auto">
+	<div class="container content pt-4 pb-4" id="calendar">
 		<h3 class="table__title">Календарь</h3>
-			<div class="row">
-				<div class="col-lg-12 col-md-12">
-					<table class="table small table-sm table-responsive-sm table-striped">
-						<thead>
-							<tr class="table-secondary">
-								<th class="text-center">Тур</th>
-								<th class="text-center">Хозяева</th>
-								<th class="text-center">Дата</th>
-								<th class="text-center">Гости</th>
-							</tr>
-						</thead>
-						<tbody>
-							{{ calendar_table }}				
-						</tbody>
-					</table>
-				</div>
-			</div>
+			<table class="table table-hover">
+				<thead>
+					<tr class="row">
+						<th class="col-1 d-sm-none d-md-block d-none">Тур</th>
+						<th class="col-3 d-sm-none d-md-block d-none text-right">Хозяева</th>
+						<th class="col-3 d-sm-none d-md-block d-none">Гости</th>
+						<th class="col-5 d-sm-none d-md-block d-none">Дата и место</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{ calendar_table }}				
+				</tbody>
+			</table>
 	</div>
 	<div class="container pt-4 pb-4" id="tournament_table">
 		<h3 class="table__title" >Турнирная таблица</h3>

@@ -1,0 +1,304 @@
+<!-- team/tournament_table: start -->
+    <table class="round_table calendar  tournament_table  tournament_stats_table">
+    <thead>
+    <tr class="grey_line">
+                    <th>№</th>
+            <th colspan="2">Команда</th>
+            <!--<th>Команда</th>-->
+            <th>Игры</th>
+            <th>В</th>
+            <th>Н</th>
+            <th>П</th>
+            <th>З</th>
+            <th>П</th>
+            <th>Разница</th>
+            <th>Очки</th>
+            </tr>
+    </thead>
+    <tbody>
+                
+                                    <tr class="position_1 white_line up_selected">
+                                                        <td>1</td>
+                    <td><a href="/club8677"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/8677_5c9d059632808.png.1553794452.png?0=1553794472&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club8677">Шереметьево Без.</a></td>
+                    <td>29</td>
+                    <td>25</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>194</td>
+                    <td>78</td>
+                    <td>116</td>
+                    <td>76</td>
+                            </tr>
+                    
+                                    <tr class="position_2 grey_line up_selected">
+                                                        <td>2</td>
+                    <td><a href="/club3649"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/3649.png.1421422670.png?0=1541574659&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club3649">Водник</a></td>
+                    <td>28</td>
+                    <td>22</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>132</td>
+                    <td>44</td>
+                    <td>88</td>
+                    <td>69</td>
+                            </tr>
+                    
+                                    <tr class="position_3 white_line up2_selected">
+                                                        <td>3</td>
+                    <td><a href="/club97"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/97_5d9c9014724b5.png.1570541582.png?0=1570541619&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club97">Восход</a></td>
+                    <td>29</td>
+                    <td>21</td>
+                    <td>4</td>
+                    <td>4</td>
+                    <td>119</td>
+                    <td>59</td>
+                    <td>60</td>
+                    <td>67</td>
+                            </tr>
+                    
+                                    <tr class="position_4 grey_line up2_selected">
+                                                        <td>4</td>
+                    <td><a href="/club92"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/92_59ef2a86537a4.png.1508846211.png?0=1541575004&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club92">КДС</a></td>
+                    <td>27</td>
+                    <td>19</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>99</td>
+                    <td>56</td>
+                    <td>43</td>
+                    <td>60</td>
+                            </tr>
+                    
+                                    <tr class="position_5 white_line">
+                                                        <td>5</td>
+                    <td><a href="/club4347"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/4347_5ac3496744f66.png.1522747750.png?0=1541574660&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club4347">Стандарт</a></td>
+                    <td>29</td>
+                    <td>19</td>
+                    <td>2</td>
+                    <td>8</td>
+                    <td>107</td>
+                    <td>68</td>
+                    <td>39</td>
+                    <td>59</td>
+                            </tr>
+                    
+                                    <tr class="position_6 grey_line">
+                                                        <td>6</td>
+                    <td><a href="/club945"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/945.png.1421413724.png?0=1541575004&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club945">Академика</a></td>
+                    <td>29</td>
+                    <td>18</td>
+                    <td>4</td>
+                    <td>7</td>
+                    <td>90</td>
+                    <td>60</td>
+                    <td>30</td>
+                    <td>58</td>
+                            </tr>
+                    
+                                    <tr class="position_7 white_line">
+                                                        <td>7</td>
+                    <td><a href="/club169"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/169_5991e70c4a620.png.1502734091.png?0=1541574468&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club169">ЮВИНАЛ</a></td>
+                    <td>28</td>
+                    <td>17</td>
+                    <td>1</td>
+                    <td>10</td>
+                    <td>75</td>
+                    <td>44</td>
+                    <td>31</td>
+                    <td>52</td>
+                            </tr>
+                    
+                                    <tr class="position_8 grey_line">
+                                                        <td>8</td>
+                    <td><a href="/club124"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/124.png.1421408394.png?0=1541575004&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club124">Национале</a></td>
+                    <td>29</td>
+                    <td>14</td>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>91</td>
+                    <td>86</td>
+                    <td>5</td>
+                    <td>47</td>
+                            </tr>
+                    
+                                    <tr class="position_9 white_line">
+                                                        <td>9</td>
+                    <td><a href="/club5348"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/5348.png.1469478435.png?0=1541574659&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club5348">Кредитный Отдел</a></td>
+                    <td>29</td>
+                    <td>14</td>
+                    <td>1</td>
+                    <td>14</td>
+                    <td>74</td>
+                    <td>84</td>
+                    <td>-10</td>
+                    <td>43</td>
+                            </tr>
+                    
+                                    <tr class="position_10 grey_line">
+                                                        <td>10</td>
+                    <td><a href="/club4738"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/4738.png.1464276396.png?0=1541574659&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club4738">КроноС</a></td>
+                    <td>28</td>
+                    <td>12</td>
+                    <td>3</td>
+                    <td>13</td>
+                    <td>84</td>
+                    <td>92</td>
+                    <td>-8</td>
+                    <td>39</td>
+                            </tr>
+                    
+                                    <tr class="position_11 white_line">
+                                                        <td>11</td>
+                    <td><a href="/club86"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/86_5db939f04bf6b.png.1572420077.png?0=1572420094&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club86">Протон</a></td>
+                    <td>29</td>
+                    <td>11</td>
+                    <td>1</td>
+                    <td>17</td>
+                    <td>65</td>
+                    <td>79</td>
+                    <td>-14</td>
+                    <td>34</td>
+                            </tr>
+                    
+                                    <tr class="position_12 grey_line">
+                                                        <td>12</td>
+                    <td><a href="/club127"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/127_58e52309b4050.png.1491411721.png?0=1541574659&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club127">Фалькон</a></td>
+                    <td>29</td>
+                    <td>10</td>
+                    <td>4</td>
+                    <td>15</td>
+                    <td>79</td>
+                    <td>105</td>
+                    <td>-26</td>
+                    <td>34</td>
+                            </tr>
+                    
+                                    <tr class="position_13 white_line">
+                                                        <td>13</td>
+                    <td><a href="/club205"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/205.png.1421419428.png?0=1541574616&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club205">ЦФК</a></td>
+                    <td>28</td>
+                    <td>10</td>
+                    <td>2</td>
+                    <td>16</td>
+                    <td>87</td>
+                    <td>108</td>
+                    <td>-21</td>
+                    <td>32</td>
+                            </tr>
+                    
+                                    <tr class="position_14 grey_line">
+                                                        <td>14</td>
+                    <td><a href="/club81"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/81_jpg.png.1385498265.png?0=1541575004&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club81">Молния</a></td>
+                    <td>29</td>
+                    <td>10</td>
+                    <td>2</td>
+                    <td>17</td>
+                    <td>75</td>
+                    <td>86</td>
+                    <td>-11</td>
+                    <td>32</td>
+                            </tr>
+                    
+                                    <tr class="position_15 white_line down2_selected">
+                                                        <td>15</td>
+                    <td><a href="/club2351"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/2351_5b586b117a4c4.png.1532521225.png?0=1541574477&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club2351">Олимпия</a></td>
+                    <td>29</td>
+                    <td>7</td>
+                    <td>6</td>
+                    <td>16</td>
+                    <td>69</td>
+                    <td>88</td>
+                    <td>-19</td>
+                    <td>27</td>
+                            </tr>
+                    
+                                    <tr class="position_16 grey_line down2_selected">
+                                                        <td>16</td>
+                    <td><a href="/club123"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/123.png.1421418205.png?0=1541574581&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club123">Головино</a></td>
+                    <td>28</td>
+                    <td>8</td>
+                    <td>3</td>
+                    <td>17</td>
+                    <td>59</td>
+                    <td>99</td>
+                    <td>-40</td>
+                    <td>27</td>
+                            </tr>
+                    
+                                    <tr class="position_17 white_line active down2_selected">
+                                                        <td>17</td>
+                    <td><a href="/club2356"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/2356.png.1421421331.png?0=1541574659&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club2356">Камелот</a></td>
+                    <td>28</td>
+                    <td>8</td>
+                    <td>2</td>
+                    <td>18</td>
+                    <td>67</td>
+                    <td>77</td>
+                    <td>-10</td>
+                    <td>26</td>
+                            </tr>
+                    
+                                    <tr class="position_18 grey_line down2_selected">
+                                                        <td>18</td>
+                    <td><a href="/club3330"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/3330_5b543e52aa597.png.1532247630.png?0=1541574659&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club3330">Лацио</a></td>
+                    <td>29</td>
+                    <td>8</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td>94</td>
+                    <td>141</td>
+                    <td>-47</td>
+                    <td>25</td>
+                            </tr>
+                    
+                                    <tr class="position_19 white_line down_selected">
+                                                        <td>19</td>
+                    <td><a href="/club128"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/128.png.1467999980.png?0=1541574467&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club128">Кристалл</a></td>
+                    <td>29</td>
+                    <td>6</td>
+                    <td>0</td>
+                    <td>23</td>
+                    <td>31</td>
+                    <td>131</td>
+                    <td>-100</td>
+                    <td>18</td>
+                            </tr>
+                    
+                                    <tr class="position_20 grey_line down_selected">
+                                                        <td>20</td>
+                    <td><a href="/club8975"><img src="/images-thumbs/28x28/www.lfl.ru/photo/clubs/big-size/8975_5d551c3639331.png.1565858868.png?0=1565859116&type=default" align="absmiddle"/></a></td>
+                    <td class="left_align_table"><a href="/club8975">Джой</a></td>
+                    <td>29</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>25</td>
+                    <td>49</td>
+                    <td>155</td>
+                    <td>-106</td>
+                    <td>8</td>
+                            </tr>
+        
+            </tbody>
+    </table>
+
+    
+    <!-- team/tournament_table: end -->
