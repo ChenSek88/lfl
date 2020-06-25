@@ -1,0 +1,92 @@
+<style>
+   
+    body {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      color: #5a5a5a;
+      font-family: 'Open Sans', sans-serif;
+      background: #fbfbfb;
+      
+    }
+
+    b, strong {
+      font-weight: 600;
+    }
+
+
+
+    h3 {
+    font-weight: 500;
+    font-size: 25px;
+    text-align: center;
+    }
+
+    .table thead th {
+      font-weight: 600;
+    }
+
+
+    .club-logo-small {
+      width:  25px;
+      height: auto;
+      margin: 10px;
+    }
+    
+    @media only screen and (max-width: 380px) { 
+
+    .club-logo-small {
+  display:none;
+    }
+
+
+}
+
+
+    
+    .club-logo {
+      width:  20px;
+      height: auto;
+    }
+
+    .club-logo-big {
+      width: 40px;
+      height: auto;
+      padding-top: 15px;
+    }
+
+    .place {
+      font-weight: 100;
+      font-size: 14px;
+      color: #6e6e6e;
+    }
+    
+    .main {
+    padding-top: 50px;
+    }
+    
+    .content {
+  padding-top: 20px;
+    background: #fff;
+    }
+    
+    .helper {
+        border-bottom: 1px dotted #606060;
+    }
+    
+    .team-title {
+     padding: 5 !important;
+    font-size: 14px;
+    font-weight: 600;
+    }
+    
+    .container {
+    width: 90%;
+    
+}
+    
+.footer {
+ 
+  padding-top: 20px;
+}
+    
+  </style>
