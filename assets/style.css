@@ -1,4 +1,4 @@
-<style>
+
    
     body {
       padding-top: 3rem;
@@ -32,6 +32,12 @@
       margin: 10px;
     }
     
+    @media only screen and (max-width: 380px) { 
+
+    .club-logo-small {
+  display:none;
+    }
+
 
 }
 
@@ -83,4 +89,4 @@
   padding-top: 20px;
 }
     
-  </style>
+  
