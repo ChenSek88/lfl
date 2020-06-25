@@ -32,12 +32,6 @@
       margin: 10px;
     }
     
-    @media only screen and (max-width: 380px) { 
-
-    .club-logo-small {
-  display:none;
-    }
-
 
 }
 
