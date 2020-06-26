@@ -98,25 +98,37 @@ with open(TEMP_DIR + 'calendar_table') as table:
 		del i['style']
 		del i['width']
 
+
+	def tour_list_row(row_data):
+			tour, owners, owners_img, guests, guests_img, date = row_data
+			return """<th class="col-1 %(dtc)s">%(tour)s</th>
+						<td class="col-2 %(tablet_class)s %() ...
+						"""
+	def table(rows):
+			return "\n".join("<tr>%s</tr>" % row for row in rows)
+
 	tr = calendar_table.find_all('tr')
 	tour_list = ''
 	desktop_class = 'd-sm-none d-md-block d-none'
 	tablet_class = 'd-none d-sm-block d-md-none'
 	mobile_class = 'col-12 d-block d-sm-none text-center'
+	#tour_list_data = [(i.find_all('td')[0].get_text(), ....)  for i in tr]
+	#tour_list_table = table(tour_list_row(r) for r in tour_list_data)
+
 	for i in tr:
 		tour = i.find_all('td')[0].get_text()
 		tour_th = """<th class="col-1 %s">%s</th>""" % (desktop_class, tour)
 		owners = i.find_all('td')[3].get_text()
 		owners_img = i.find_all('img')[0]['src'].split('16x16/')[1]
 		owners_tablet_image = """<td class="col-2 %s text-center"><img class="club-logo-big" src="%s%s"></td>"""%(tablet_class, images_url, owners_img)
-		owners_desktop = """<td class="col-3 %s text-right">%s<img class="club-logo" src="%s%s"></td>"""%(desktop_class, owners, images_url, owners_img)
+		owners_desktop = """<td class="col-4 %s text-right">%s<img class="club-logo" src="%s%s"></td>"""%(desktop_class, owners, images_url, owners_img)
 		guests = i.find_all('td')[5].get_text()
 		guests_img = i.find_all('img')[1]['src'].split('16x16/')[1]
 		guests_tablet_image = """<td class="col-2 %s text-center"><img class="club-logo-big" src="%s%s"><br></td>"""%(tablet_class, images_url, guests_img)
-		guests_desktop = """<td class="col-3 %s"><img class="club-logo" src="%s%s">%s</td>""" %(desktop_class, images_url, guests_img, guests)
+		guests_desktop = """<td class="col-4 %s"><img class="club-logo" src="%s%s">%s</td>""" %(desktop_class, images_url, guests_img, guests)
 		br_tag = soup.new_tag('br')
 		date = i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()
-		date_desktop = """<td class="col-5 %s"><span class="place">%s</span></td>""" % (desktop_class, date)
+		date_desktop = """<td class="col-3 %s"><span class="place">%s</span></td>""" % (desktop_class, date)
 		date_tablet = """<td class="col-8 %s text-center">
              <span class="badge badge-success">Тур %s</span><br>
              <b>%s – %s</b><br>
