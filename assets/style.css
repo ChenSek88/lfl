@@ -32,7 +32,7 @@
       margin: 10px;
     }
     
-    @media only screen and (max-width: 380px) { 
+    @media only screen and (max-width: 404px) { 
 
     .club-logo-small {
   display:none;
