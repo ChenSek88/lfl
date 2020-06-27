@@ -98,7 +98,7 @@ with open(TEMP_DIR + 'calendar_table') as table:
 		del i['style']
 		del i['width']
 
-'''
+
 	def tour_list_row(row_data):
 			tour, owners, owners_img, guests, guests_img, date = row_data
 			return """<th class="col-1 %(dtc)s">%(tour)s</th>
@@ -106,7 +106,7 @@ with open(TEMP_DIR + 'calendar_table') as table:
 						"""
 	def table(rows):
 			return "\n".join("<tr>%s</tr>" % row for row in rows)
-'''
+
 
 	tr = calendar_table.find_all('tr')
 	tour_list = ''
@@ -115,7 +115,7 @@ with open(TEMP_DIR + 'calendar_table') as table:
 
 
 	def tour_list_desktop():
-		return """<th class="col-2 d-sm-none d-md-block d-none text-center">%s</th>
+		return """<th class="col-2 d-sm-none d-md-block d-none">%s</th>
 					<td class="col-3 d-sm-none d-md-block d-none text-right">%s<img class="club-logo" src="%s"></td>
 					<td class="col-3 d-sm-none d-md-block d-none"><img class="club-logo" src="%s">%s</td>
 					<td class="col-4 d-sm-none d-md-block d-none"><span class="place">%s</span></td>
