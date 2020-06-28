@@ -152,8 +152,11 @@ with open(TEMP_DIR + 'calendar_table') as table:
 		host_img = img_url + i.find_all('img')[0]['src'].split('16x16/')[1]
 		guest = i.find_all('td')[5].get_text()
 		guest_img = img_url + i.find_all('img')[1]['src'].split('16x16/')[1]
-		date = i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()
-		tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile())
+		if len(i.find_all('td')[1].get_text()) > 1:
+			date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()) 
+		else:
+			date = '-'
+		tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile()) 
 
 
 with open(TEMP_DIR + 'players_table') as table:
