@@ -55,7 +55,7 @@ with open(TEMP_DIR + 'tournament_table') as table:
 
 	td = tournament_table.find_all('td')
 	for i in td:
-		i['class'] = 'text-center'
+		i['class'] = 'col'
 
 	pos = 1
 	tr = tournament_table.find_all('tr')
@@ -63,20 +63,26 @@ with open(TEMP_DIR + 'tournament_table') as table:
 		td = i.find_all('td')[1]
 		td.extract()
 		td = i.find_all('td')[1]
-		td['class'] = 'team text-left'	
+		td['class'] = 'col-3 team text-left'	
 		del i['class']
 		i['class'] = 'pos_' + str(pos)
 		pos += 1
 		if i['class'] in up:
-			i['class'] = 'table-success'
+			i['class'] = 'row table-success'
 		elif i['class'] in up2:
-			i['class'] = 'table-warning'
+			i['class'] = 'row table-warning'
 		elif i['class'] in down:
-			i['class'] = 'table-danger'
+			i['class'] = 'row table-danger'
 		elif i['class'] in down2:
-			i['class'] = 'bg-danger'
+			i['class'] = 'row bg-danger'
 		else:
-			i['class'] = 'table-light'
+			i['class'] = 'row table-light'
+		td_6 = i.find_all('td')[6]
+		td_6['class'] = 'col d-sm-none d-md-block d-none'
+		td_7= i.find_all('td')[7]
+		td_7['class'] = 'col d-sm-none d-md-block d-none'
+		td_8= i.find_all('td')[8]
+		td_8['class'] = 'col d-sm-none d-md-block d-none'
 
 
 with open(TEMP_DIR + 'calendar_table') as table:
