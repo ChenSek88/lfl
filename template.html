@@ -56,7 +56,7 @@ crossorigin="anonymous"></script>
 				</tbody>
 			</table>
 	</div>
-	<div class="container content pt-4 pb-4" id="tournament_table">
+	<div class="container content pb-4" id="tournament_table">
 		<h3 class="table__title">Турнирная таблица</h3>
 			<table class="table small table-sm">
 				<thead>
@@ -76,41 +76,32 @@ crossorigin="anonymous"></script>
 					{{ tournament_table }}
 			</table>
 	</div>
-	<div class="container pt-r pb-4" id="dusqual_table">
+	<div class="container content pb-4" id="dusqual_table">
 		<h3 class="table__title">Дисквалификации</h3>
-			<div class="row">
-				<div class="col-lg-12 col-md-12">
-					<table class="table small table-sm table-responsive-sm table-striped">
-						<tr class="table-light">
-							<td>{{ disqual_table }}</td>  
-						</tr>
-					</table>
-				</div>
-			</div>
+			<table class="table table-sm">
+				<tr class="row table-light">
+					<td class="col-12">{{ disqual_table }}</td>  
+				</tr>
+			</table>
 	</div>
 
-	<div class="container pt-r pb-4" id="players_table">
+	<div class="container content pb-4" id="players_table">
 		<h3 class="table__title">Статистика игроков</h3>
-			<div class="row">
-				<div class="col-lg-12 col-md-12">
-					<table class="table small table-sm table-responsive-sm table-striped">
-						<thead>
-						    <tr class="table-secondary">
-						        <th class="text-center">№</th>
-					            <th class="text-center">ФИО</th>
-					            <th class="text-center">И</th>
-					            <th class="text-center">Г</th>
-					            <th class="text-center">П</th>
-					            <th class="text-center"><img src="http://lfl.ru/theme/img/popup_yc.png"></th>
-					            <th class="text-center"><img src="http://lfl.ru/theme/img/popup_2yc.png"></th>
-					            <th class="text-center"><img src="http://lfl.ru/theme/img/popup_rc.png"></th>
-						                        
-						    </tr>
-					    </thead>
-					    {{ players_table }}
-					</table>
-				</div>
-			</div>
+			<table class="table small table-sm">
+				<thead>
+					<tr class="table-secondary">
+						<th class="text-center">№</th>
+						<th class="text-center">ФИО</th>
+						<th class="text-center">И</th>
+						<th class="text-center">Г</th>
+						<th class="text-center">П</th>
+						<th class="text-center"><img src="http://lfl.ru/theme/img/popup_yc.png"></th>
+						<th class="text-center"><img src="http://lfl.ru/theme/img/popup_2yc.png"></th>
+						<th class="text-center"><img src="http://lfl.ru/theme/img/popup_rc.png"></th>
+					</tr>
+				</thead>
+				{{ players_table }}
+			</table>
 	</div>
 </div>
 </body>
