@@ -55,7 +55,7 @@ with open(TEMP_DIR + 'tournament_table') as table:
 
 	td = tournament_table.find_all('td')
 	for i in td:
-		i['class'] = 'col'
+		i['class'] = 'col text-center'
 
 	pos = 1
 	tr = tournament_table.find_all('tr')
@@ -78,11 +78,11 @@ with open(TEMP_DIR + 'tournament_table') as table:
 		else:
 			i['class'] = 'row table-light'
 		td_6 = i.find_all('td')[6]
-		td_6['class'] = 'col d-sm-none d-md-block d-none'
+		td_6['class'] = 'col d-sm-none d-md-block d-none text-center'
 		td_7= i.find_all('td')[7]
-		td_7['class'] = 'col d-sm-none d-md-block d-none'
+		td_7['class'] = 'col d-sm-none d-md-block d-none text-center'
 		td_8= i.find_all('td')[8]
-		td_8['class'] = 'col d-sm-none d-md-block d-none'
+		td_8['class'] = 'col d-sm-none d-md-block d-none text-center'
 
 
 with open(TEMP_DIR + 'calendar_table') as table:
