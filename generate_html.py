@@ -5,8 +5,10 @@ import requests
 from jinja2 import Template
 import os
 import shutil
+from config import config
 
-HOME_DIR = '/home/ts/lfl/'
+
+HOME_DIR = config.get('home_dir', 'path')
 os.mkdir(HOME_DIR + 'temp_tables/')
 TEMP_DIR = HOME_DIR + 'temp_tables/'
 
