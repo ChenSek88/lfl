@@ -40,7 +40,27 @@
 
 
 }
+    
+    @media only screen and (max-width: 404px) { 
 
+    .user_image {
+  display:none;
+    }
+
+
+}
+    @media only screen and (min-width: 768px) { 
+
+    #tournament_table .table {
+  font-size: 14px;
+    }
+    #players_table .table {
+  font-size: 14px;
+    }
+    #calendar .table {
+  font-size: 14px;
+    }
+}
 
     
     .club-logo {

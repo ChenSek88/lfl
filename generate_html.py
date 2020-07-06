@@ -40,7 +40,7 @@ get_table(TEMP_DIR + 'players_table', players_stats_url)
 get_table(TEMP_DIR + 'results_table', tournament_results_url)
 get_table(TEMP_DIR + 'disqual_table', disqualifications_url)
 
-
+#generate tournament table
 with open(TEMP_DIR + 'tournament_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
 	tournament_table = soup.find('tbody')
@@ -86,7 +86,7 @@ with open(TEMP_DIR + 'tournament_table') as table:
 		td_8= i.find_all('td')[8]
 		td_8['class'] = 'col d-sm-none d-md-block d-none text-center'
 
-
+#generate calendar
 with open(TEMP_DIR + 'calendar_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
 	calendar_table = soup.find('tbody')
@@ -160,7 +160,7 @@ with open(TEMP_DIR + 'calendar_table') as table:
 			date = '-'
 		tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile()) 
 
-
+#generate players table
 with open(TEMP_DIR + 'players_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
 	players_table = soup.find('tbody')
