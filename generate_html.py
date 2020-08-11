@@ -30,8 +30,12 @@ img_url = 'http://lfl.ru/images-thumbs/100x100/'
 
 def get_table(file, url):
 	with open(file, 'w') as f:
-		stats_table = requests.request("GET", url, headers=headers, data = payload)
-		f.write(stats_table.text)
+		try:
+			stats_table = requests.request("GET", url, headers=headers, data = payload)
+			f.write(stats_table.text)
+		except:
+			shutil.rmtree(HOME_DIR + 'temp_tables')
+			sys.exit()
 
 
 get_table(TEMP_DIR + 'tournament_table', tournament_stats_url)
