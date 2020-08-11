@@ -6,7 +6,7 @@ from jinja2 import Template
 import os
 import shutil
 from config import config
-
+import sys
 
 HOME_DIR = config.get('home_dir', 'path')
 os.mkdir(HOME_DIR + 'temp_tables/')
@@ -44,47 +44,51 @@ get_table(TEMP_DIR + 'disqual_table', disqualifications_url)
 with open(TEMP_DIR + 'tournament_table') as table:
 	soup = BeautifulSoup(table, 'lxml')
 	tournament_table = soup.find('tbody')
-	images = tournament_table.find_all('img')
-	for img in images:
-		del img['align']
-		img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
+	try:
+		images = tournament_table.find_all('img') 
+		for img in images:
+			del img['align']
+			img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
 
-	a = tournament_table.find_all('a')
-	for i in a:
-		i['href'] = 'http://lfl.ru' + i['href']
-		i['target'] = '_blank'
-		i['class'] = 'text-body'
+		a = tournament_table.find_all('a')
+		for i in a:
+			i['href'] = 'http://lfl.ru' + i['href']
+			i['target'] = '_blank'
+			i['class'] = 'text-body'
 
-	td = tournament_table.find_all('td')
-	for i in td:
-		i['class'] = 'col text-center'
+		td = tournament_table.find_all('td')
+		for i in td:
+			i['class'] = 'col text-center'
 
-	pos = 1
-	tr = tournament_table.find_all('tr')
-	for i in tr:
-		td = i.find_all('td')[1]
-		td.extract()
-		td = i.find_all('td')[1]
-		td['class'] = 'col-3 team text-left'	
-		del i['class']
-		i['class'] = 'pos_' + str(pos)
-		pos += 1
-		if i['class'] in up:
-			i['class'] = 'row table-success'
-		elif i['class'] in up2:
-			i['class'] = 'row table-warning'
-		elif i['class'] in down:
-			i['class'] = 'row table-danger'
-		elif i['class'] in down2:
-			i['class'] = 'row bg-danger'
-		else:
-			i['class'] = 'row table-light'
-		td_6 = i.find_all('td')[6]
-		td_6['class'] = 'col d-sm-none d-md-block d-none text-center'
-		td_7= i.find_all('td')[7]
-		td_7['class'] = 'col d-sm-none d-md-block d-none text-center'
-		td_8= i.find_all('td')[8]
-		td_8['class'] = 'col d-sm-none d-md-block d-none text-center'
+		pos = 1
+		tr = tournament_table.find_all('tr')
+		for i in tr:
+			td = i.find_all('td')[1]
+			td.extract()
+			td = i.find_all('td')[1]
+			td['class'] = 'col-3 team text-left'	
+			del i['class']
+			i['class'] = 'pos_' + str(pos)
+			pos += 1
+			if i['class'] in up:
+				i['class'] = 'row table-success'
+			elif i['class'] in up2:
+				i['class'] = 'row table-warning'
+			elif i['class'] in down:
+				i['class'] = 'row table-danger'
+			elif i['class'] in down2:
+				i['class'] = 'row bg-danger'
+			else:
+				i['class'] = 'row table-light'
+			td_6 = i.find_all('td')[6]
+			td_6['class'] = 'col d-sm-none d-md-block d-none text-center'
+			td_7= i.find_all('td')[7]
+			td_7['class'] = 'col d-sm-none d-md-block d-none text-center'
+			td_8= i.find_all('td')[8]
+			td_8['class'] = 'col d-sm-none d-md-block d-none text-center'
+	except:
+		shutil.rmtree(HOME_DIR + 'temp_tables')
+		sys.exit()
 
 #generate calendar
 with open(TEMP_DIR + 'calendar_table') as table:
