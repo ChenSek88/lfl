@@ -13,8 +13,19 @@ crossorigin="anonymous"></script>
 <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 
-	  
-<body style="background: url('assets/back.jpg') fixed;">
+
+<body class="body-bg">
+	<script type="text/javascript">
+		function random_bg(max) {
+			let num = randomInteger(1, max);
+			document.body.classList.add('body-bg--' + num)
+		}
+		function randomInteger(min, max) {
+  			let rand = min - 0.5 + Math.random() * (max - min + 1);
+  			return Math.round(rand);
+		}
+		random_bg(6)
+	</script>>
 
 <header>
     <nav class="navbar fixed-top navbar-expand-sm navbar-light" style="background-color: #2e4d86">
