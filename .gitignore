@@ -1,4 +1,5 @@
 test.py
 index.html
-.conf
-.pyc
+*.conf
+*.pyc
+__pycache__
