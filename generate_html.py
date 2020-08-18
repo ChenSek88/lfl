@@ -155,18 +155,22 @@ with open(TEMP_DIR + 'calendar_table') as table:
 					<span class="place">%s</span></td>
 				"""%(tour, host_img, host, guest, guest_img, date)
 
+	try:
+		for i in tr:
+			tour = i.find_all('td')[0].get_text()
+			host = i.find_all('td')[3].get_text()
+			host_img = img_url + i.find_all('img')[0]['src'].split('16x16/')[1]
+			guest = i.find_all('td')[5].get_text()
+			guest_img = img_url + i.find_all('img')[1]['src'].split('16x16/')[1]
+			if len(i.find_all('td')[1].get_text()) > 1:
+				date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()) 
+			else:
+				date = '-'
+			tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile()) 
+	except:
+		shutil.rmtree(HOME_DIR + 'temp_tables')
+		sys.exit()
 
-	for i in tr:
-		tour = i.find_all('td')[0].get_text()
-		host = i.find_all('td')[3].get_text()
-		host_img = img_url + i.find_all('img')[0]['src'].split('16x16/')[1]
-		guest = i.find_all('td')[5].get_text()
-		guest_img = img_url + i.find_all('img')[1]['src'].split('16x16/')[1]
-		if len(i.find_all('td')[1].get_text()) > 1:
-			date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()) 
-		else:
-			date = '-'
-		tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile()) 
 
 #generate players table
 with open(TEMP_DIR + 'players_table') as table:
