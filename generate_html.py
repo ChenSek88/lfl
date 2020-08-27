@@ -219,7 +219,6 @@ def players_table():
 			if os.path.exists(outpath):
 				pass
 			else:
-				print(img['src'])
 				opener = urllib.request.build_opener()
 				opener.addheaders = [('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36')]
 				urllib.request.install_opener(opener)
