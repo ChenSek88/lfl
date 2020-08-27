@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 import requests
+import urllib.request
 from jinja2 import Template
 import os
 import shutil
@@ -32,7 +33,7 @@ img_url = 'http://lfl.ru/images-thumbs/100x100/'
 def catch_exception(func):
 	def wrapper(*args):
 		try:
-			func(*args)
+			return func(*args)
 		except:
 			print('Something went wrong!')
 			shutil.rmtree(HOME_DIR + 'temp_tables')
@@ -59,24 +60,25 @@ get_table(TEMP_DIR + 'disqual_table', disqualifications_url)
 def tournament_table():
 	with open(TEMP_DIR + 'tournament_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
-		tournament_table = soup.find('tbody')
-		images = tournament_table.find_all('img') 
-		for img in images:
-			del img['align']
-			img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
+		table = soup.find('tbody')
+		#images = table.find_all('img') 
+		#for img in images:
+		#	del img['align']
+		#	img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
+		#	print(img)
 
-		a = tournament_table.find_all('a')
+		a = table.find_all('a')
 		for i in a:
 			i['href'] = 'http://lfl.ru' + i['href']
 			i['target'] = '_blank'
 			i['class'] = 'text-body'
 
-		td = tournament_table.find_all('td')
+		td = table.find_all('td')
 		for i in td:
 			i['class'] = 'col text-center'
 
 		pos = 1
-		tr = tournament_table.find_all('tr')
+		tr = table.find_all('tr')
 		for i in tr:
 			td = i.find_all('td')[1]
 			td.extract()
@@ -101,7 +103,7 @@ def tournament_table():
 			td_7['class'] = 'col d-sm-none d-md-block d-none text-center'
 			td_8= i.find_all('td')[8]
 			td_8['class'] = 'col d-sm-none d-md-block d-none text-center'
-		return tournament_table
+		return table
 
 
 #generate calendar
@@ -109,37 +111,25 @@ def tournament_table():
 def calendar():
 	with open(TEMP_DIR + 'calendar_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
-		calendar_table = soup.find('tbody')
-		images = calendar_table.find_all('img')
+		table = soup.find('tbody')
+		images = table.find_all('img')
 		for img in images:
 			img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
 
-		a = calendar_table.find_all('a')
+		a = table.find_all('a')
 		for i in a:
 			i['href'] = 'http://lfl.ru' + i['href']
 			i['class'] = 'text-body'
 			i['target'] = '_blank'
 
-		td = calendar_table.find_all('td')
+		td = table.find_all('td')
 		for i in td:
 			i['class'] = 'align-middle'
 			del i['style']
 			del i['width']
 
-		#def tour_list_row(row_data):
-		#		tour, owners, owners_img, guests, guests_img, date = row_data
-		#		return """<th class="col-1 %(dtc)s">%(tour)s</th>
-		#					<td class="col-2 %(tablet_class)s %() ...
-		#					"""
-
-		#def table(rows):
-		#		return "\n".join("<tr>%s</tr>" % row for row in rows)
-
-
-		tr = calendar_table.find_all('tr')
+		tr = table.find_all('tr')
 		tour_list = ''
-		#tour_list_data = [(i.find_all('td')[0].get_text(), ... for i in tr]
-		#tour_list_table = table(tour_list_row(r) for r in tour_list_data)
 
 
 		def tour_list_desktop():
@@ -147,7 +137,7 @@ def calendar():
 						<td class="col-3 d-sm-none d-md-block d-none text-right">%s<img class="club-logo" src="%s"></td>
 						<td class="col-3 d-sm-none d-md-block d-none"><img class="club-logo" src="%s">%s</td>
 						<td class="col-4 d-sm-none d-md-block d-none"><span class="place">%s</span></td>
-					""" %(tour, host, host_img, guest_img, guest, date)
+					""" %(tour, host, path_to_host_img, path_to_guest_img, guest, date)
 
 
 		def tour_list_tablet():
@@ -157,7 +147,7 @@ def calendar():
 						<b>%s – %s</b><br>
 						<span class="place">%s</span></td>
 						<td class="col-2 d-none d-sm-block d-md-none text-center"><img class="club-logo-big" src="%s"><br></td>
-					""" %(host_img, tour, host, guest, date, guest_img)
+					""" %(path_to_host_img, tour, host, guest, date, path_to_guest_img)
 
 
 		def tour_list_mobile():
@@ -165,9 +155,10 @@ def calendar():
 						<span class="badge badge-success">Тур %s</span><br>
 						<img class="club-logo-small" src="%s"><b>%s – %s</b><img class="club-logo-small" src="%s"><br>
 						<span class="place">%s</span></td>
-					"""%(tour, host_img, host, guest, guest_img, date)
+					"""%(tour, path_to_host_img, host, guest, path_to_guest_img, date)
 
 		for i in tr:
+			find_all_img = i.find_all('img')
 			tour = i.find_all('td')[0].get_text()
 			host = i.find_all('td')[3].get_text()
 			host_img = img_url + i.find_all('img')[0]['src'].split('16x16/')[1]
@@ -177,7 +168,21 @@ def calendar():
 				date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()) 
 			else:
 				date = '-'
-			tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile()) 
+			host_filename = host_img.split("/")[-1]
+			guest_filename = guest_img.split("/")[-1]
+			path_to_host_img = '/images/' + host_filename
+			path_to_guest_img = '/images/' + guest_filename
+			outpath = os.path.join(HOME_DIR + 'images/', host_filename)
+			outpath2 = os.path.join(HOME_DIR + 'images/', guest_filename)
+			tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile())
+			if os.path.exists(outpath) and os.path.exists(outpath2):
+				pass
+			else:
+				opener = urllib.request.build_opener()
+				opener.addheaders = [('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36')]
+				urllib.request.install_opener(opener)
+				urllib.request.urlretrieve(host_img, outpath)
+				urllib.request.urlretrieve(guest_img, outpath2)
 		return tour_list
 
 
@@ -186,38 +191,50 @@ def calendar():
 def players_table():
 	with open(TEMP_DIR + 'players_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
-		players_table = soup.find('tbody')
+		table = soup.find('tbody')
 
-		tr = players_table.find_all('tr')
+		tr = table.find_all('tr')
 		for i in tr:
 			i['class'] = 'table-light'
 			del i['data-division-id']
 			del i['data-tournament-id']
 
-		tour_header = players_table.find_all(attrs={"class":"tour-header"})
+		tour_header = table.find_all(attrs={"class":"tour-header"})
 		for i in tour_header:
 			i['class'] = 'amplua text-center font-weight-bold'
 
-		a = players_table.find_all('a')
+		a = table.find_all('a')
 		for i in a:
 			i['href'] = 'http://lfl.ru' + i['href']
 			i['class'] = 'text-body'
 			i['target'] = '_blank'
 		
-		images = players_table.find_all('img')
+		images = table.find_all('img')
 		for img in images:
 			img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
 			img['class'] = (img['class'] + ['pr-1'])
 			del img['align']
+			filename = img["src"].split("/")[-1]
+			outpath = os.path.join(HOME_DIR + 'images/', filename)
+			if os.path.exists(outpath):
+				pass
+			else:
+				print(img['src'])
+				opener = urllib.request.build_opener()
+				opener.addheaders = [('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36')]
+				urllib.request.install_opener(opener)
+				urllib.request.urlretrieve(img['src'], outpath)
+			img['src'] = '/images/' + img['src'].split("/")[-1]
 
-		td = players_table.find_all('td')
+
+		td = table.find_all('td')
 		for i in td:
 			if not i.has_attr('class'):
 				i['class'] = 'text-center align-middle'
 			span = i.find_all('span')
 			for s in span:
 				s.extract()	
-		return players_table
+		return table
 
 
 #generate disqual table
@@ -225,8 +242,8 @@ def players_table():
 def disqual_table():
 	with open(TEMP_DIR + 'disqual_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
-		disqual_table = soup.find('div').get_text()
-		return disqual_table
+		table = soup.find('div').get_text()
+		return table
 
 
 html = open(HOME_DIR + 'template.html').read()
@@ -234,7 +251,7 @@ template = Template(html)
 
 
 with open(HOME_DIR + "index.html", "w") as index:
-	index.write(template.render(tournament_table=tournament_table(), calendar_table=tour_list(),
+	index.write(template.render(tournament_table=tournament_table(), calendar_table=calendar(),
 		players_table=players_table(), disqual_table=disqual_table()))
 
 
