@@ -8,11 +8,12 @@
    "display" :"standalone",
    "orientation":"any",
    "icons":[
+
       {
-         "src":"/icon/logo_512.png",
+         "src":"/icon/logo_192.png",
          "type":"image/png",
-         "sizes":"256x256 512x512",
-         "purpose": "maskalable any"
+         "sizes":"192x192",
+         "purpose": "maskalable"
       }
    ],
    "prefer_related_applications":false
