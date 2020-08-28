@@ -10,7 +10,7 @@
    "orientation":"any",
    "icons":[
       {
-         "src":"/icon/android-icon-192x192-dunplab-manifest-10828.png",
+         "src":"/icon/android-icon-512x512-dunplab-manifest-10828.png",
          "type":"image/png",
          "sizes":"512x512"
       },
