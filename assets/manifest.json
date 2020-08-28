@@ -13,11 +13,7 @@
          "type":"image/png",
          "sizes":"256x256 512x512",
          "purpose": "maskalable any"
-      },
-      {
-         "src":"/icon/logo.svg"
       }
-
    ],
    "prefer_related_applications":false
 }
