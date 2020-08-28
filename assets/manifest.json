@@ -2,13 +2,18 @@
    "short_name":"camelot",
    "name":"fc-camelot.ru",
    "lang":"en",
-   "start_url":"https://www.fc-camelot.ru",
+   "start_url":"/",
    "background_color":"#2e4d86",
    "theme_color":"#2e4d86",
    "dir":"ltr",
-   "display":"standalone",
+   "display" :"minimal-ua",
    "orientation":"any",
    "icons":[
+      {
+         "src":"/icon/android-icon-192x192-dunplab-manifest-10828.png",
+         "type":"image/png",
+         "sizes":"512x512"
+      },
       {
          "src":"/icon/android-icon-192x192-dunplab-manifest-10828.png",
          "type":"image/png",
