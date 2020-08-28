@@ -10,15 +10,16 @@
    "icons":[
 
       {
-         "src":"/icon/logo_512.png",
+         "src":"/icon/logo_192.png",
          "type":"image/png",
-         "sizes":"512x512",
+         "sizes":"192x192",
          "purpose": "maskalable"
       },
       {
-         "src":"/icon/logo.svg"
+         "src":"/icon/logo_512.png",
+         "type":"image/png",
+         "sizes":"512x512"
       }
-
    ],
    "prefer_related_applications":false
 }
