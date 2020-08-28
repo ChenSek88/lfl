@@ -6,7 +6,7 @@
    "background_color":"#2e4d86",
    "theme_color":"#2e4d86",
    "dir":"ltr",
-   "display" :"minimal-ui",
+   "display" :"standalone",
    "orientation":"any",
    "icons":[
       {
