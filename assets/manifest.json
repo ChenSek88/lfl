@@ -17,7 +17,8 @@
       {
          "src":"/icon/logo_512.png",
          "type":"image/png",
-         "sizes":"256x256 512x512"
+         "sizes":"256x256 512x512",
+         "purpose": "maskalable any"
       },
       {
          "src":"/icon/logo.svg"
