@@ -72,10 +72,10 @@
 
 }
     
-    @media only screen and (max-width: 10004px) { 
+    @media only screen and (max-width: 404px) { 
 
     .user_image {
-  display:none;
+    display:none;
     }
 
 
@@ -139,6 +139,16 @@
 .footer {
  
   padding-top: 20px;
+
+
+
+}
+
+.user_image {
+    width: 25px;
+    height: 25px;
+}
+
 }
     
   
