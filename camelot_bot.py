@@ -8,7 +8,7 @@ from telebot import types
 TOKEN = '1398876177:AAGgwj9haR0umKX5qffGrQMep1wFssNRtNk'
 bot = telebot.TeleBot(TOKEN)
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-keyboard.row('Расписание', 'Таблица', 'Результаты')
+keyboard.row('Расписание')
 
 
 @bot.message_handler(commands=['start'])
@@ -26,13 +26,12 @@ def send_text(message):
 		bot.send_message(message.chat.id, 'Пока!')
 	elif message.text.lower() == 'расписание':
 		bot.send_message(message.chat.id, open('schedule.txt').read())
-	elif message.text.lower() == 'таблица':
-		bot.send_message(message.chat.id, 'Понадобится немного времени')
+	else:
+		bot.send_message(message.chat.id, 'Фигню написал, попробуй еще раз.')
 
 
-@bot.message_handler(content_types=['sticker'])
-def sticker_id(message):
-	print(message)
-
+#@bot.message_handler(content_types=['sticker'])
+#def sticker_id(message):
+#	print(message)
 
 bot.polling()

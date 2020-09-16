@@ -106,6 +106,24 @@ def tournament_table():
 		return table
 
 
+def parse_schedule_for_bot():
+	with open(TEMP_DIR + 'calendar_table') as table:
+		with open(HOME_DIR + "schedule.txt", "w") as schedule:
+			soup = BeautifulSoup(table, 'lxml')
+			table = soup.find('tbody')
+			tr = table.find_all('tr')
+			for i in tr:
+				if len(i.find_all('td')[1].get_text()) > 1:
+					date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()).strip()
+					teams = i.find_all('td')[3].get_text().strip() + ' - ' + i.find_all('td')[5].get_text().strip()
+					game = date + '\n' +  teams
+					print(game)
+					schedule.write(game)
+
+
+parse_schedule_for_bot()
+
+
 #generate calendar
 @catch_exception
 def calendar_table():
