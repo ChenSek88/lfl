@@ -61,11 +61,11 @@ def tournament_table():
 	with open(TEMP_DIR + 'tournament_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
 		table = soup.find('tbody')
-		#images = table.find_all('img') 
-		#for img in images:
-		#	del img['align']
-		#	img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
-		#	print(img)
+		images = table.find_all('img') 
+		for img in images:
+			del img['align']
+			img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
+			print(img)
 
 		a = table.find_all('a')
 		for i in a:
@@ -108,7 +108,7 @@ def tournament_table():
 
 #generate calendar
 @catch_exception
-def calendar():
+def calendar_table():
 	with open(TEMP_DIR + 'calendar_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
 		table = soup.find('tbody')
@@ -248,10 +248,13 @@ def disqual_table():
 html = open(HOME_DIR + 'template.html').read()
 template = Template(html)
 
+tournament = tournament_table()
+calendar = calendar_table()
+players = players_table()
+disqual = disqual_table()
 
 with open(HOME_DIR + "index.html", "w") as index:
-	index.write(template.render(tournament_table=tournament_table(), calendar_table=calendar(),
-		players_table=players_table(), disqual_table=disqual_table()))
-
+	index.write(template.render(tournament_table=tournament, calendar_table=calendar,
+		players_table=players, disqual_table=disqual)
 
 shutil.rmtree(HOME_DIR + 'temp_tables')
