@@ -65,7 +65,6 @@ def tournament_table():
 		#for img in images:
 		#	del img['align']
 		#	img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
-		#	print(img)
 
 		a = table.find_all('a')
 		for i in a:
@@ -117,7 +116,6 @@ def parse_schedule_for_bot():
 					date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()).strip()
 					teams = i.find_all('td')[3].get_text().strip() + ' - ' + i.find_all('td')[5].get_text().strip()
 					game = date + '\n' +  teams
-					print(game)
 					schedule.write(game)
 
 
