@@ -8,6 +8,8 @@ import os
 import shutil
 from config import config
 import sys
+from datetime import datetime
+
 
 HOME_DIR = config.get('home_dir', 'path')
 os.mkdir(HOME_DIR + 'temp_tables/')
@@ -35,7 +37,7 @@ def catch_exception(func):
 		try:
 			return func(*args)
 		except:
-			print('Something went wrong!')
+			print('Something went wrong!' + '	' +  str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 			shutil.rmtree(HOME_DIR + 'temp_tables')
 			sys.exit()
 	return wrapper
@@ -272,6 +274,6 @@ disqual = disqual_table()
 with open(HOME_DIR + "index.html", "w") as index:
 	index.write(template.render(tournament_table=tournament, calendar_table=calendar,
 		players_table=players, disqual_table=disqual))
-	print('index.html updated successfully!')
+	print('index.html updated successfully!' + '	' +  str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 
 shutil.rmtree(HOME_DIR + 'temp_tables')
