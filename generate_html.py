@@ -274,5 +274,6 @@ disqual = disqual_table()
 with open(HOME_DIR + "index.html", "w") as index:
 	index.write(template.render(tournament_table=tournament, calendar_table=calendar,
 		players_table=players, disqual_table=disqual)
+	print('index.html updated successfully!')
 
 shutil.rmtree(HOME_DIR + 'temp_tables')
