@@ -152,26 +152,26 @@ def calendar_table():
 
 		def tour_list_desktop():
 			return """<th class="col-2 d-sm-none d-md-block d-none">%s</th>
-						<td class="col-3 d-sm-none d-md-block d-none text-right">%s<img class="club-logo" src=""></td>
+						<td class="col-3 d-sm-none d-md-block d-none text-right">%s</td>
 						<td class="col-3 d-sm-none d-md-block d-none"><img class="club-logo" src="">%s</td>
 						<td class="col-4 d-sm-none d-md-block d-none"><span class="place">%s</span></td>
 					""" %(tour, host, guest, date)
 
 
 		def tour_list_tablet():
-			return """<td class="col-2 d-none d-sm-block d-md-none text-center"><img class="club-logo-big" src=""></td>
+			return """<td class="col-2 d-none d-sm-block d-md-none text-center"></td>
 						<td class="col-8 d-none d-sm-block d-md-none text-center">
 						<span class="badge badge-success">Тур %s</span><br>
 						<b>%s – %s</b><br>
 						<span class="place">%s</span></td>
-						<td class="col-2 d-none d-sm-block d-md-none text-center"><img class="club-logo-big" src=""><br></td>
+						<td class="col-2 d-none d-sm-block d-md-none text-center"></td>
 					""" %(tour, host, guest, date)
 
 
 		def tour_list_mobile():
 			return """<td class="col-12 d-block d-sm-none text-center">
 						<span class="badge badge-success">Тур %s</span><br>
-						<img class="club-logo-small" src=""><b>%s – %s</b><img class="club-logo-small" src=""><br>
+						<img class="club-logo-small" src=""><b>%s – %s</b><br>
 						<span class="place">%s</span></td>
 					"""%(tour, host, guest, date)
 

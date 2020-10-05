@@ -8,6 +8,8 @@ import os
 import shutil
 from config import config
 import sys
+from datetime import datetime
+
 
 HOME_DIR = config.get('home_dir', 'path')
 os.mkdir(HOME_DIR + 'temp_tables/')
@@ -27,7 +29,7 @@ down2 = ['pos_19', 'pos_20']
 payload  = {}
 headers = {}
 
-img_url = 'http://lfl.ru/images-thumbs/100x100/'
+#img_url = 'http://lfl.ru/images-thumbs/100x100/'
 
 
 def catch_exception(func):
@@ -64,7 +66,6 @@ def tournament_table():
 		images = table.find_all('img') 
 		for img in images:
 			del img['align']
-			img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
 
 		a = table.find_all('a')
 		for i in a:
@@ -128,13 +129,13 @@ def calendar_table():
 	with open(TEMP_DIR + 'calendar_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
 		table = soup.find('tbody')
-		images = table.find_all('img')
-		for img in images:
-			img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
+		#images = table.find_all('img')
+		#for img in images:
+		#	print(img)
+		#	img['src'] = img['src'].split('?')[0]
 
 		a = table.find_all('a')
 		for i in a:
-			i['href'] = 'http://lfl.ru' + i['href']
 			i['class'] = 'text-body'
 			i['target'] = '_blank'
 
@@ -177,9 +178,9 @@ def calendar_table():
 			find_all_img = i.find_all('img')
 			tour = i.find_all('td')[0].get_text()
 			host = i.find_all('td')[3].get_text()
-			host_img = img_url + i.find_all('img')[0]['src'].split('16x16/')[1]
+			host_img = i.find_all('img')[0]['src']
 			guest = i.find_all('td')[5].get_text()
-			guest_img = img_url + i.find_all('img')[1]['src'].split('16x16/')[1]
+			guest_img = i.find_all('img')[1]['src']
 			if len(i.find_all('td')[1].get_text()) > 1:
 				date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()) 
 			else:
@@ -225,7 +226,8 @@ def players_table():
 			i['class'] = 'text-body'
 			i['target'] = '_blank'
 		
-		images = table.find_all('img')
+
+		'''images = table.find_all('img')
 		for img in images:
 			img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
 			img['class'] = (img['class'] + ['pr-1'])
@@ -239,7 +241,7 @@ def players_table():
 				opener.addheaders = [('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36')]
 				urllib.request.install_opener(opener)
 				urllib.request.urlretrieve(img['src'], outpath)
-			img['src'] = '/images/' + img['src'].split("/")[-1]
+			img['src'] = '/images/' + img['src'].split("/")[-1]'''
 
 
 		td = table.find_all('td')
@@ -271,7 +273,7 @@ disqual = disqual_table()
 
 with open(HOME_DIR + "index.html", "w") as index:
 	index.write(template.render(tournament_table=tournament, calendar_table=calendar,
-		players_table=players, disqual_table=disqual)
+		players_table=players, disqual_table=disqual))
 	print('index.html updated successfully!' + '	' +  str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 
 shutil.rmtree(HOME_DIR + 'temp_tables')
