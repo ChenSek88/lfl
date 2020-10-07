@@ -9,17 +9,19 @@ import shutil
 from config import config
 import sys
 from datetime import datetime
+import re
 
 
 HOME_DIR = config.get('home_dir', 'path')
 os.mkdir(HOME_DIR + 'temp_tables/')
 TEMP_DIR = HOME_DIR + 'temp_tables/'
 
-tournament_stats_url = "http://lfl.ru/?ajax=1&method=tournament_stats_table&tournament_id=5098&club_id=2356&season_id=39"
-tournament_calendar_url= "http://lfl.ru/?ajax=1&method=tournament_calendar_table&tournament_id=0&club_id=2356&season_id=39"
-tournament_results_url = "http://lfl.ru/?ajax=1&method=tournament_resault_table&tournament_id=0&club_id=2356&season_id=39"
-players_stats_url = "http://lfl.ru/?ajax=1&method=tournament_squads_table&tournament_id=5098&club_id=2356&season_id=39"
-disqualifications_url= "http://lfl.ru/?ajax=1&mode=new_format&method=tournament_disqualifications_table&tournament_id=5098&club_id=2356&season_id=39"
+tournament_stats_url = "https://lfl.ru/?ajax=1&method=tournament_stats_table&tournament_id=5098&club_id=2356&season_id=39"
+tournament_calendar_url= "https://lfl.ru/?ajax=1&method=tournament_calendar_table&tournament_id=0&club_id=2356&season_id=39"
+tournament_results_url = "https://lfl.ru/?ajax=1&method=tournament_resault_table&tournament_id=0&club_id=2356&season_id=39"
+players_stats_url = "https://lfl.ru/?ajax=1&method=tournament_squads_table&tournament_id=5098&club_id=2356&season_id=39"
+disqualifications_url= "https://lfl.ru/?ajax=1&mode=new_format&method=tournament_disqualifications_table&tournament_id=5098&club_id=2356&season_id=39"
+user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36'
 
 up = ['pos_1', 'pos_2']
 up2 = ['pos_3', 'pos_4']
@@ -28,8 +30,6 @@ down2 = ['pos_19', 'pos_20']
 
 payload  = {}
 headers = {}
-
-#img_url = 'http://lfl.ru/images-thumbs/100x100/'
 
 
 def catch_exception(func):
@@ -69,7 +69,7 @@ def tournament_table():
 
 		a = table.find_all('a')
 		for i in a:
-			i['href'] = 'http://lfl.ru' + i['href']
+			i['href'] = 'https://lfl.ru' + i['href']
 			i['target'] = '_blank'
 			i['class'] = 'text-body'
 
@@ -129,10 +129,6 @@ def calendar_table():
 	with open(TEMP_DIR + 'calendar_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
 		table = soup.find('tbody')
-		#images = table.find_all('img')
-		#for img in images:
-		#	print(img)
-		#	img['src'] = img['src'].split('?')[0]
 
 		a = table.find_all('a')
 		for i in a:
@@ -196,7 +192,7 @@ def calendar_table():
 				pass
 			else:
 				opener = urllib.request.build_opener()
-				opener.addheaders = [('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36')]
+				opener.addheaders = [('User-Agent', user_agent)]
 				urllib.request.install_opener(opener)
 				urllib.request.urlretrieve(host_img, outpath)
 				urllib.request.urlretrieve(guest_img, outpath2)
@@ -220,29 +216,33 @@ def players_table():
 		for i in tour_header:
 			i['class'] = 'amplua text-center font-weight-bold'
 
-		a = table.find_all('a')
-		for i in a:
-			i['href'] = 'http://lfl.ru' + i['href']
+		players = table.find_all(attrs={"class":"player"})		
+		for i in players:
+			i['href'] = 'https://lfl.ru' + i['href']
 			i['class'] = 'text-body'
 			i['target'] = '_blank'
-		
 
-		'''images = table.find_all('img')
+		images = table.find_all(attrs={"class":"usr-image_link"})
 		for img in images:
-			img['src'] = ('http://lfl.ru' + img['src']).split('?')[0]
+			img['href'] = 'https://lfl.ru' + img['href']
+			img['target'] = '_blank'
+			style = img['style']
+			image = re.search("http.*[)]", style)
+			print(image)
+			image_url = style[image.start():image.end()-1]
+			print(image_url)
+			image_name = image_url.split("/")[-1]
+			print(image_name)
+			img['style'] = '/images/' + image_name
 			img['class'] = (img['class'] + ['pr-1'])
-			del img['align']
-			filename = img["src"].split("/")[-1]
-			outpath = os.path.join(HOME_DIR + 'images/', filename)
+			outpath = os.path.join(HOME_DIR + 'images/', image_name)
 			if os.path.exists(outpath):
 				pass
 			else:
 				opener = urllib.request.build_opener()
-				opener.addheaders = [('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36')]
+				opener.addheaders = [('User-Agent', user_agent)]
 				urllib.request.install_opener(opener)
-				urllib.request.urlretrieve(img['src'], outpath)
-			img['src'] = '/images/' + img['src'].split("/")[-1]'''
-
+				urllib.request.urlretrieve(image_url, outpath)
 
 		td = table.find_all('td')
 		for i in td:
