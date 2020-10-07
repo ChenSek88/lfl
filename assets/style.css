@@ -148,6 +148,10 @@
     width: 25px;
     height: 25px;
 }
+.usr-image-link {
+    background-size: contain;
+    background-position: center;
+}
 
 }
     
