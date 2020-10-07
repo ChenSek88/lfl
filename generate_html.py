@@ -220,15 +220,15 @@ def players_table():
 
 		players = table.find_all(attrs={"class":"player"})		
 		for i in players:
-			i['href'] = 'https://lfl.ru' + i['href']
+			#i['href'] = 'https://lfl.ru' + i['href']
 			i['class'] = 'text-body'
 			i['target'] = '_blank'
 
-		'''images = table.find_all(attrs={"class":"usr-image_link"})
+		images = table.find_all(attrs={"class":"usr-image_link"})
 		for img in images:
 			img['href'] = 'https://lfl.ru' + img['href']
 			img['target'] = '_blank'
-			style = img['style']
+			'''style = img['style']
 			image = re.search("http.*[)]", style)
 			image_url = style[image.start():image.end()-1]
 			image_name = image_url.split("/")[-1]
