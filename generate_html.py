@@ -230,7 +230,7 @@ def players_table():
 			image = re.search("http.*[)]", style)
 			image_url = style[image.start():image.end()-1]
 			image_name = image_url.split("/")[-1]
-			img['style'] = '''"background: url(images/%s)"''' %image_name
+			img['style'] = '''"background: url(fc-camelot.ru/images/%s)"''' %image_name
 			img['class'] = (img['class'] + ['pr-1'])
 			outpath = os.path.join(HOME_DIR + 'images/', image_name)
 			if os.path.exists(outpath):
