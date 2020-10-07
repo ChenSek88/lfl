@@ -200,7 +200,7 @@ def calendar_table():
 
 
 #generate players table
-@catch_exception
+#@catch_exception
 def players_table():
 	with open(TEMP_DIR + 'players_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
@@ -228,12 +228,9 @@ def players_table():
 			img['target'] = '_blank'
 			style = img['style']
 			image = re.search("http.*[)]", style)
-			print(image)
 			image_url = style[image.start():image.end()-1]
-			print(image_url)
 			image_name = image_url.split("/")[-1]
-			print(image_name)
-			img['style'] = '/images/' + image_name
+			img['style'] = '''"background: url(image/%s)"''' %image_name
 			img['class'] = (img['class'] + ['pr-1'])
 			outpath = os.path.join(HOME_DIR + 'images/', image_name)
 			if os.path.exists(outpath):
