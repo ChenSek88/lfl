@@ -209,7 +209,7 @@ def players_table():
 		tr = table.find_all('tr')
 		for i in tr:
 			td = i.find_all('td')
-			print(len(td))
+			#print(len(td))
 			i['class'] = 'table-light'
 			del i['data-division-id']
 			del i['data-tournament-id']
