@@ -58,54 +58,56 @@ get_table(TEMP_DIR + 'disqual_table', disqualifications_url)
 
 
 #generate tournament table
-@catch_exception
+#@catch_exception
 def tournament_table():
 	with open(TEMP_DIR + 'tournament_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
 		table = soup.find('tbody')
-		images = table.find_all('img') 
-		for img in images:
-			del img['align']
-
-		a = table.find_all('a')
-		for i in a:
-			i['href'] = 'https://lfl.ru' + i['href']
-			i['target'] = '_blank'
-			i['class'] = 'text-body'
-
-		td = table.find_all('td')
-		for i in td:
-			i['class'] = 'col text-center'
-
-		pos = 1
-		tr = table.find_all('tr')
-		for i in tr:
-			td = i.find_all('td')[1]
-			td.extract()
-			td = i.find_all('td')[1]
-			td['class'] = 'col-3 team text-left'	
-			del i['class']
-			i['class'] = 'pos_' + str(pos)
-			pos += 1
-			if i['class'] in up:
-				i['class'] = 'row table-success'
-			elif i['class'] in up2:
-				i['class'] = 'row table-warning'
-			elif i['class'] in down:
-				i['class'] = 'row table-danger'
-			elif i['class'] in down2:
-				i['class'] = 'row bg-danger'
-			else:
-				i['class'] = 'row table-light'
-			td_6 = i.find_all('td')[6]
-			td_6['class'] = 'col d-sm-none d-md-block d-none text-center'
-			td_7= i.find_all('td')[7]
-			td_7['class'] = 'col d-sm-none d-md-block d-none text-center'
-			td_8= i.find_all('td')[8]
-			td_8['class'] = 'col d-sm-none d-md-block d-none text-center'
-		return table
+		team_list = ''
 
 
+	def team_stat():
+		return """<td class="col text-center">%s</td>
+				<td class="col-3 team text-left">%s</td>
+				<td class="col text-center">%s</td>
+				<td class="col text-center">%s</td>
+				<td class="col text-center">%s</td>
+				<td class="col text-center">%s</td>
+				<td class="col d-sm-none d-md-block d-none text-center">%s</td>
+				<td class="col d-sm-none d-md-block d-none text-center">%s</td>
+				<td class="col d-sm-none d-md-block d-none text-center">%s</td>
+				<td class="col text-center">%s</td>
+			""" %(place, team, games, wins, draws, losses, goals_for, goals_against, goal_diff, points)
+	pos = 1
+	tr = table.find_all('tr')
+	for i in tr:
+		place = i.find_all('td')[0].get_text()
+		team = i.find_all('td')[2].get_text().split(' ')[0]
+		games = i.find_all('td')[3].get_text()
+		wins = i.find_all('td')[4].get_text()
+		draws = i.find_all('td')[5].get_text()
+		losses = i.find_all('td')[6].get_text()
+		goals_for = i.find_all('td')[7].get_text()
+		goals_against = i.find_all('td')[8].get_text()
+		goal_diff = i.find_all('td')[9].get_text()
+		points = i.find_all('td')[10].get_text()
+		position = 'pos_' + str(pos)
+		if position in up:
+			position = position + ' table-success'
+		elif position in up2:
+			position = position + ' table-warning'
+		elif position in down:
+			position = position + ' table-danger'
+		elif position in down2: 
+			position = position + ' bg-danger'
+		else:
+			position = position + 'row table-light'
+		pos += 1
+		team_list += """<tr class="row %s">%s</tr>""" %(position, team_stat())
+	return team_list
+
+
+@catch_exception
 def parse_schedule_for_bot():
 	with open(TEMP_DIR + 'calendar_table') as table:
 		with open(HOME_DIR + "schedule.txt", "w") as schedule:
@@ -120,87 +122,91 @@ def parse_schedule_for_bot():
 					schedule.write(game)
 
 
-parse_schedule_for_bot()
-
+#parse_schedule_for_bot()
 
 #generate calendar
 @catch_exception
 def calendar_table():
 	with open(TEMP_DIR + 'calendar_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
-		table = soup.find('tbody')
+		if soup.find('tbody'):
+			table = soup.find('tbody')
+			a = table.find_all('a')
+			for i in a:
+				i['class'] = 'text-body'
+				i['target'] = '_blank'
 
-		a = table.find_all('a')
-		for i in a:
-			i['class'] = 'text-body'
-			i['target'] = '_blank'
+			td = table.find_all('td')
+			for i in td:
+				i['class'] = 'align-middle'
+				del i['style']
+				del i['width']
 
-		td = table.find_all('td')
-		for i in td:
-			i['class'] = 'align-middle'
-			del i['style']
-			del i['width']
-
-		tr = table.find_all('tr')
-		tour_list = ''
-
-
-		def tour_list_desktop():
-			return """<th class="col-2 d-sm-none d-md-block d-none">%s</th>
-						<td class="col-3 d-sm-none d-md-block d-none text-right">%s<img class="club-logo" src="%s"></td>
-						<td class="col-3 d-sm-none d-md-block d-none"><img class="club-logo" src="%s">%s</td>
-						<td class="col-4 d-sm-none d-md-block d-none"><span class="place">%s</span></td>
-					""" %(tour, host, path_to_host_img, path_to_guest_img, guest, date)
+			tr = table.find_all('tr')
+			tour_list = ''
 
 
-		def tour_list_tablet():
-			return """<td class="col-2 d-none d-sm-block d-md-none text-center"><img class="club-logo-big" src="%s"></td>
-						<td class="col-8 d-none d-sm-block d-md-none text-center">
-						<span class="badge badge-success">Тур %s</span><br>
-						<b>%s – %s</b><br>
-						<span class="place">%s</span></td>
-						<td class="col-2 d-none d-sm-block d-md-none text-center"><img class="club-logo-big" src="%s"><br></td>
-					""" %(path_to_host_img, tour, host, guest, date, path_to_guest_img)
+			def tour_list_desktop():
+				return """<th class="col-2 d-sm-none d-md-block d-none">%s</th>
+							<td class="col-3 d-sm-none d-md-block d-none text-right">%s<img class="club-logo" src="%s"></td>
+							<td class="col-3 d-sm-none d-md-block d-none"><img class="club-logo" src="%s">%s</td>
+							<td class="col-4 d-sm-none d-md-block d-none"><span class="place">%s</span></td>
+						""" %(tour, host, path_to_host_img, path_to_guest_img, guest, date)
 
 
-		def tour_list_mobile():
-			return """<td class="col-12 d-block d-sm-none text-center">
-						<span class="badge badge-success">Тур %s</span><br>
-						<img class="club-logo-small" src="%s"><b>%s – %s</b><img class="club-logo-small" src="%s"><br>
-						<span class="place">%s</span></td>
-					"""%(tour, path_to_host_img, host, guest, path_to_guest_img, date)
+			def tour_list_tablet():
+				return """<td class="col-2 d-none d-sm-block d-md-none text-center"><img class="club-logo-big" src="%s"></td>
+							<td class="col-8 d-none d-sm-block d-md-none text-center">
+							<span class="badge badge-success">Тур %s</span><br>
+							<b>%s – %s</b><br>
+							<span class="place">%s</span></td>
+							<td class="col-2 d-none d-sm-block d-md-none text-center"><img class="club-logo-big" src="%s"><br></td>
+						""" %(path_to_host_img, tour, host, guest, date, path_to_guest_img)
 
-		for i in tr:
-			find_all_img = i.find_all('img')
-			tour = i.find_all('td')[0].get_text()
-			host = i.find_all('td')[3].get_text()
-			host_img = i.find_all('img')[0]['src']
-			guest = i.find_all('td')[5].get_text()
-			guest_img = i.find_all('img')[1]['src']
-			if len(i.find_all('td')[1].get_text()) > 1:
-				date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()) 
-			else:
-				date = '-'
-			host_filename = host_img.split("/")[-1]
-			guest_filename = guest_img.split("/")[-1]
-			path_to_host_img = '/images/' + host_filename
-			path_to_guest_img = '/images/' + guest_filename
-			outpath = os.path.join(HOME_DIR + 'images/', host_filename)
-			outpath2 = os.path.join(HOME_DIR + 'images/', guest_filename)
-			tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile())
-			if os.path.exists(outpath) and os.path.exists(outpath2):
-				pass
-			else:
-				opener = urllib.request.build_opener()
-				opener.addheaders = [('User-Agent', user_agent)]
-				urllib.request.install_opener(opener)
-				urllib.request.urlretrieve(host_img, outpath)
-				urllib.request.urlretrieve(guest_img, outpath2)
-		return tour_list
+
+			def tour_list_mobile():
+				return """<td class="col-12 d-block d-sm-none text-center">
+							<span class="badge badge-success">Тур %s</span><br>
+							<img class="club-logo-small" src="%s"><b>%s – %s</b><img class="club-logo-small" src="%s"><br>
+							<span class="place">%s</span></td>
+						"""%(tour, path_to_host_img, host, guest, path_to_guest_img, date)
+
+			for i in tr:
+				find_all_img = i.find_all('img')
+				tour = i.find_all('td')[0].get_text()
+				host = i.find_all('td')[3].get_text()
+				host_img = i.find_all('img')[0]['src']
+				guest = i.find_all('td')[5].get_text()
+				guest_img = i.find_all('img')[1]['src']
+				if len(i.find_all('td')[1].get_text()) > 1:
+					date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()) 
+				else:
+					date = '-'
+				host_filename = host_img.split("/")[-1]
+				guest_filename = guest_img.split("/")[-1]
+				path_to_host_img = '/images/' + host_filename
+				path_to_guest_img = '/images/' + guest_filename
+				outpath = os.path.join(HOME_DIR + 'images/', host_filename)
+				outpath2 = os.path.join(HOME_DIR + 'images/', guest_filename)
+				tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile())
+				if os.path.exists(outpath) and os.path.exists(outpath2):
+					pass
+				else:
+					opener = urllib.request.build_opener()
+					opener.addheaders = [('User-Agent', user_agent)]
+					urllib.request.install_opener(opener)
+					urllib.request.urlretrieve(host_img, outpath)
+					urllib.request.urlretrieve(guest_img, outpath2)
+			return tour_list
+		else:
+			table = soup.find_all('div')
+			table[1]['class'] == ['empty-list']
+			tour_list = """<tr class="row">Ближайших матчей нет</tr>"""
+			return tour_list
 
 
 #generate players table
-#@catch_exception
+@catch_exception
 def players_table():
 	with open(TEMP_DIR + 'players_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
