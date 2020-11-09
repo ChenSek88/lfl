@@ -16,11 +16,11 @@ HOME_DIR = config.get('home_dir', 'path')
 os.mkdir(HOME_DIR + 'temp_tables/')
 TEMP_DIR = HOME_DIR + 'temp_tables/'
 
-tournament_stats_url = "https://lfl.ru/?ajax=1&method=tournament_stats_table&tournament_id=5098&club_id=2356&season_id=39"
+tournament_stats_url = "https://lfl.ru/?ajax=1&method=tournament_stats_table&tournament_id=7190&club_id=2356&season_id=41"
 tournament_calendar_url= "https://lfl.ru/?ajax=1&method=tournament_calendar_table&tournament_id=0&club_id=2356&season_id=39"
-tournament_results_url = "https://lfl.ru/?ajax=1&method=tournament_resault_table&tournament_id=0&club_id=2356&season_id=39"
+tournament_results_url = "https://lfl.ru/?ajax=1&method=tournament_resault_table&tournament_id=7190&club_id=2356&season_id=41"
 players_stats_url = "https://lfl.ru/?ajax=1&method=tournament_squads_table&tournament_id=5098&club_id=2356&season_id=39"
-disqualifications_url= "https://lfl.ru/?ajax=1&mode=new_format&method=tournament_disqualifications_table&tournament_id=5098&club_id=2356&season_id=39"
+disqualifications_url= "https://lfl.ru/?ajax=1&mode=new_format&method=tournament_disqualifications_table&tournament_id=7190&club_id=2356&season_id=41"
 user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36'
 
 up = ['pos_1', 'pos_2']
