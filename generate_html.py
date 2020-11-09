@@ -172,31 +172,32 @@ def calendar_table():
 						"""%(tour, path_to_host_img, host, guest, path_to_guest_img, date)
 
 			for i in tr:
-				find_all_img = i.find_all('img')
-				tour = i.find_all('td')[0].get_text()
-				host = i.find_all('td')[3].get_text()
-				host_img = i.find_all('img')[0]['src']
-				guest = i.find_all('td')[5].get_text()
-				guest_img = i.find_all('img')[1]['src']
-				if len(i.find_all('td')[1].get_text()) > 1:
-					date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()) 
-				else:
-					date = '-'
-				host_filename = host_img.split("/")[-1]
-				guest_filename = guest_img.split("/")[-1]
-				path_to_host_img = '/images/' + host_filename
-				path_to_guest_img = '/images/' + guest_filename
-				outpath = os.path.join(HOME_DIR + 'images/', host_filename)
-				outpath2 = os.path.join(HOME_DIR + 'images/', guest_filename)
-				tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile())
-				if os.path.exists(outpath) and os.path.exists(outpath2):
-					pass
-				else:
-					opener = urllib.request.build_opener()
-					opener.addheaders = [('User-Agent', user_agent)]
-					urllib.request.install_opener(opener)
-					urllib.request.urlretrieve(host_img, outpath)
-					urllib.request.urlretrieve(guest_img, outpath2)
+				if i.find_all('td')[1].get_text() != '-':
+					find_all_img = i.find_all('img')
+					tour = i.find_all('td')[0].get_text()
+					host = i.find_all('td')[3].get_text()
+					host_img = i.find_all('img')[0]['src']
+					guest = i.find_all('td')[5].get_text()
+					guest_img = i.find_all('img')[1]['src']
+					if len(i.find_all('td')[1].get_text()) > 1:
+						date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()) 
+					else:
+						date = '-'
+					host_filename = host_img.split("/")[-1]
+					guest_filename = guest_img.split("/")[-1]
+					path_to_host_img = '/images/' + host_filename
+					path_to_guest_img = '/images/' + guest_filename
+					outpath = os.path.join(HOME_DIR + 'images/', host_filename)
+					outpath2 = os.path.join(HOME_DIR + 'images/', guest_filename)
+					tour_list += """<tr class="row">%s%s%s</tr>"""%(tour_list_desktop(), tour_list_tablet(), tour_list_mobile())
+					if os.path.exists(outpath) and os.path.exists(outpath2):
+						pass
+					else:
+						opener = urllib.request.build_opener()
+						opener.addheaders = [('User-Agent', user_agent)]
+						urllib.request.install_opener(opener)
+						urllib.request.urlretrieve(host_img, outpath)
+						urllib.request.urlretrieve(guest_img, outpath2)
 			return tour_list
 		else:
 			table = soup.find_all('div')
