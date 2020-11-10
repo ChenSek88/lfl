@@ -82,7 +82,7 @@ def tournament_table():
 	tr = table.find_all('tr')
 	for i in tr:
 		place = i.find_all('td')[0].get_text()
-		team = i.find_all('td')[2].get_text().split(' ')[0]
+		team = i.find_all('td')[2].get_text()
 		games = i.find_all('td')[3].get_text()
 		wins = i.find_all('td')[4].get_text()
 		draws = i.find_all('td')[5].get_text()
