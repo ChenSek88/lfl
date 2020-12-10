@@ -221,13 +221,14 @@ def players_table():
 			del i['data-division-id']
 			del i['data-tournament-id']
 
+
 		tour_header = table.find_all(attrs={"class":"tour-header"})
 		for i in tour_header:
 			i['class'] = 'amplua text-center font-weight-bold'
 
 		players = table.find_all(attrs={"class":"player"})		
 		for i in players:
-			#i['href'] = 'https://lfl.ru' + i['href']
+			i['href'] = 'https://lfl.ru' + i['href']
 			i['class'] = 'text-body'
 			i['target'] = '_blank'
 
@@ -235,11 +236,11 @@ def players_table():
 		for img in images:
 			img['href'] = 'https://lfl.ru' + img['href']
 			img['target'] = '_blank'
-			'''style = img['style']
+			style = img['style']
 			image = re.search("http.*[)]", style)
 			image_url = style[image.start():image.end()-1]
 			image_name = image_url.split("/")[-1]
-			img['style'] = 'background-image: url(images/%s)' %image_name
+			img['style'] = 'background: url(images/%s) no-repeat center center' %image_name
 			img['class'] = (img['class'] + ['pr-1'])
 			outpath = os.path.join(HOME_DIR + 'images/', image_name)
 			if os.path.exists(outpath):
@@ -248,7 +249,7 @@ def players_table():
 				opener = urllib.request.build_opener()
 				opener.addheaders = [('User-Agent', user_agent)]
 				urllib.request.install_opener(opener)
-				urllib.request.urlretrieve(image_url, outpath)'''
+				urllib.request.urlretrieve(image_url, outpath)
 
 		td = table.find_all('td')
 		for i in td:

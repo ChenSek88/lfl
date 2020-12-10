@@ -144,15 +144,9 @@
 
 }
 
-.user_image {
-    width: 25px;
-    height: 25px;
-}
-.usr-image-link {
-    background-size: contain;
-    background-position: center;
-}
 
+.usr-image_link {
+    background-size: contain!important;
 }
     
   
