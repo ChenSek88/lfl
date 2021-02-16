@@ -58,7 +58,7 @@ get_table(TEMP_DIR + 'disqual_table', disqualifications_url)
 
 
 #generate tournament table
-#@catch_exception
+@catch_exception
 def tournament_table():
 	with open(TEMP_DIR + 'tournament_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
