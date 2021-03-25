@@ -99,9 +99,15 @@ crossorigin="anonymous"></script>
 	<div class="container content pb-4" id="disqual_table">
 		<h3 class="table__title">Дисквалификации</h3>
 			<table class="table table-sm">
-				<tr class="row table-light">
-					<td class="col-12">{{ disqual_table }}</td>  
-				</tr>
+				<thead>
+					<tr class="row table-secondary">
+						<th class="col text-center">ФИО</th>
+						<th class="col text-center">Проп. с</th>
+						<th class="col text-center">Срок</th>
+						<th class="col text-center">Пропустил</th>
+					</tr>
+				</thead>
+				{{ disqual_table }}
 			</table>
 	</div>
 	<hr class="featurette-divider">
