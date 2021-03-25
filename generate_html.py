@@ -283,7 +283,6 @@ def disqual_table():
 			time = i.find_all('td')[3].get_text()
 			missed = i.find_all('td')[4].get_text()
 			tour_list = """<tr class="row">%s</tr>"""%(players_list())
-			print(tour_list)
 		return tour_list
 
 
