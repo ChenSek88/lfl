@@ -266,24 +266,31 @@ def players_table():
 def disqual_table():
 	with open(TEMP_DIR + 'disqual_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
-		table = soup.find('tbody')
-		tr = table.find_all('tr')
-		tour_list = ''
+		if soup.find('tbody'):
+			table = soup.find('tbody')
+			tr = table.find_all('tr')
+			tour_list = ''
 
-		def players_list():
-			return """<td class="col text-center">%s</td>
-					<td class="col text-center">%s</td>
-					<td class="col text-center">%s</td>
-					<td class="col text-center">%s</td>
-				"""%(player, skips_from, time, missed)
+			def players_list():
+				return """<td class="col text-center">%s</td>
+						<td class="col text-center">%s</td>
+						<td class="col text-center">%s</td>
+						<td class="col text-center">%s</td>
+					"""%(player, skips_from, time, missed)
 
-		for i in tr:
-			player = i.find_all('td')[1].get_text()
-			skips_from = i.find_all('td')[2].get_text()
-			time = i.find_all('td')[3].get_text()
-			missed = i.find_all('td')[4].get_text()
-			tour_list = """<tr class="row">%s</tr>"""%(players_list())
-		return tour_list
+			for i in tr:
+				player = i.find_all('td')[1].get_text()
+				skips_from = i.find_all('td')[2].get_text()
+				time = i.find_all('td')[3].get_text()
+				missed = i.find_all('td')[4].get_text()
+				tour_list = """<tr class="row">%s</tr>"""%(players_list())
+			return tour_list
+		else:
+			table = soup.find_all('div')
+			print(table)
+			table[0]['class'] == ['empty-list']
+			tour_list = """<tr class="row"> </tr>"""
+			return tour_list
 
 
 html = open(HOME_DIR + 'template.html').read()
