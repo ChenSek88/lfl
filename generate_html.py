@@ -262,7 +262,7 @@ def players_table():
 
 
 #generate disqual table
-#@catch_exception
+@catch_exception
 def disqual_table():
 	with open(TEMP_DIR + 'disqual_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
