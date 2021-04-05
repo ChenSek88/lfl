@@ -287,7 +287,6 @@ def disqual_table():
 			return tour_list
 		else:
 			table = soup.find_all('div')
-			print(table)
 			table[0]['class'] == ['empty-list']
 			tour_list = """<tr class="row"> </tr>"""
 			return tour_list
