@@ -306,7 +306,7 @@ def games_results_table():
 			def tour_list_desktop():
 				return """<th class="col-1 d-sm-none d-md-block d-none">%s</th>
 							<td class="col-3 d-sm-none d-md-block d-none text-right">%s<img class="club-logo" src="%s"></td>
-							<td class="col-1 d-sm-none d-md-block d-none"><span class="result">%s</span></td>
+							<td class="col-1 d-sm-none d-md-block d-none text-center"><span class="result">%s</span></td>
 							<td class="col-3 d-sm-none d-md-block d-none"><img class="club-logo" src="%s">%s</td>
 							<td class="col-4 d-sm-none d-md-block d-none"><span class="place">%s</span></td>
 						""" %(tour, host, path_to_host_img, result, path_to_guest_img, guest, date)
