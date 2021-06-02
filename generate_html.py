@@ -316,7 +316,7 @@ def games_results_table():
 				return """<td class="col-2 d-none d-sm-block d-md-none text-center"><img class="club-logo-big" src="%s"></td>
 							<td class="col-8 d-none d-sm-block d-md-none text-center">
 							<span class="badge badge-success">Тур %s</span><br>
-							<b>%s</b> %s <b>%s</b><br>
+							<b>%s %s %s</b><br>
 							<span class="place">%s</span></td>
 							<td class="col-2 d-none d-sm-block d-md-none text-center"><img class="club-logo-big" src="%s"><br></td>
 						""" %(path_to_host_img, tour, host, result, guest, date, path_to_guest_img)
@@ -325,7 +325,7 @@ def games_results_table():
 			def tour_list_mobile():
 				return """<td class="col-12 d-block d-sm-none text-center">
 							<span class="badge badge-success">Тур %s</span><br>
-							<img class="club-logo-small" src="%s"><b>%s</b> %s <b>%s</b><img class="club-logo-small" src="%s"><br>
+							<img class="club-logo-small" src="%s"><b>%s %s %s</b><img class="club-logo-small" src="%s"><br>
 							<span class="place">%s</span></td>
 						"""%(tour, path_to_host_img, host, result, guest, path_to_guest_img, date)
 
