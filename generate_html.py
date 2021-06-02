@@ -292,9 +292,8 @@ def disqual_table():
 			return tour_list
 
 
-
 #generate games results table
-#@catch_exception
+@catch_exception
 def games_results_table():
 	with open(TEMP_DIR + 'games_results_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
@@ -334,8 +333,6 @@ def games_results_table():
 			for i in tr:
 				find_all_img = i.find_all('img')
 				tour = i.find_all('td')[0].get_text()
-				#date = i.find_all('td')[1].get_text()
-				#time = i.find_all('td')[2].get_text()
 				date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text())
 				host = i.find_all('td')[3].get_text()
 				result = i.find_all('td')[4].get_text()
@@ -358,7 +355,6 @@ def games_results_table():
 					urllib.request.urlretrieve(host_img, outpath)
 					urllib.request.urlretrieve(guest_img, outpath2)
 			return tour_list
-
 
 
 html = open(HOME_DIR + 'template.html').read()
