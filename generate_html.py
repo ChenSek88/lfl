@@ -116,13 +116,14 @@ def parse_schedule_for_bot():
 			tr = table.find_all('tr')
 			for i in tr:
 				if len(i.find_all('td')[1].get_text()) > 1:
-					date = (i.find_all('td')[1].get_text() + ' ' + i.find_all('td')[7].get_text() + ', ' + i.find_all('td')[2].get_text()).strip()
 					teams = i.find_all('td')[3].get_text().strip() + ' - ' + i.find_all('td')[5].get_text().strip()
-					game = date + '\n' +  teams
+					date = (i.find_all('td')[1].get_text().split(' ')[0] + ' ' + i.find_all('td')[2].get_text()).strip()
+					place = "Стадион " + i.find_all('td')[7].get_text()
+					game = teams + '\n' + date + '\n' + place
 					schedule.write(game)
 
 
-#parse_schedule_for_bot()
+parse_schedule_for_bot()
 
 #generate calendar
 @catch_exception
@@ -216,7 +217,6 @@ def players_table():
 		tr = table.find_all('tr')
 		for i in tr:
 			td = i.find_all('td')
-			#print(len(td))
 			i['class'] = 'table-light'
 			del i['data-division-id']
 			del i['data-tournament-id']
