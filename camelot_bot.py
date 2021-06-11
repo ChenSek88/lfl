@@ -5,23 +5,31 @@
 from datetime import datetime
 import requests
 from config import config
+import hashlib
 
 
 TOKEN = config.get('TOKEN', 'token')
+greeting = []
 
 #bot = telebot.TeleBot(TOKEN)
 #keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 #keyboard.row('Расписание')
 
-users = [78623899]
+
 url = 'https://api.telegram.org/bot'
 chat_name = '@camelot_test'
 #chat_id = '-1001241312381'
 test_chat_id = '-1001308984669'
 
-message = 'Внимание! До игры %s \n' % time_left()
-
 game = open('schedule.txt').read()
+
+temp_list = []
+
+with open('hash_list.txt') as hash_list:
+	for h in hash_list:
+		temp_list.append(h.strip())
+
+
 
 
 def time_left():
@@ -33,20 +41,39 @@ def time_left():
 	if hours > 24:
 		days, hours = divmod(hours, 24)
 		return("%02dд %02dч %02dмин"% (days, hours, minutes))
+		#print("%02dд %02dч %02dмин"% (days, hours, minutes))
 	else:
 		return("%02dч %02dмин"% (hours, minutes))
+		#print("%02dч %02dмин"% (hours, minutes))
 
 
-def request_url():
-	return url + TOKEN + '/sendMessage?chat_id=' + test_chat_id + '&text=' + message + game
+def request_url(message):
+	return url + TOKEN + '/sendMessage?chat_id=' + test_chat_id + '&text=' + message
 
 
-def send_message():
-	response = requests.request("GET", request_url())
+def send_message(message):
+	response = requests.request("GET", request_url(message))
 	assert response.status_code == 200
 
 
-send_message()
+first_message = 'Внимание! Новая игра: \n%s' % game
+#second_message = 'Внимание!! Игра завтра %s \n%s' % (time_left(), game)
+#third_message = 'Внимание!!! До игры %s \n%s' % (time_left(), game)
+
+result = hashlib.md5(first_message.encode('utf-8')).hexdigest()
+
+
+with open('hash_list.txt', 'a') as hash_list:
+	if result in temp_list:
+		print('Сообщение было отправлено')
+	else:
+		send_message(first_message)
+		hash_list.write("\n" + result)
+
+
+#print(result)
+
+
 
 
 '''@bot.message_handler(commands=['start'])
