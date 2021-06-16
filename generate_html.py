@@ -119,7 +119,7 @@ def parse_schedule_for_bot():
 					teams = i.find_all('td')[3].get_text().strip() + ' - ' + i.find_all('td')[5].get_text().strip()
 					date = (i.find_all('td')[1].get_text().split(' ')[0] + ' ' + i.find_all('td')[2].get_text()).strip()
 					place = "Стадион " + i.find_all('td')[7].get_text()
-					game = teams + '\n' + date + '\n' + place
+					game = teams + '\t' + date + '\t' + place + '\n'
 					schedule.write(game)
 
 
