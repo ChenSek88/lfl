@@ -20,6 +20,7 @@ chat_id = '-1001241312381'
 
 schedule = {}
 statuses = {}
+days_of_week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
 
 
 def request_url(message):
@@ -54,7 +55,9 @@ with open("statuses.txt") as st:
 
 
 for hash, sch in schedule.items():
-	game = sch[0] + '\n' + sch[1] + '\n' + sch[2]
+	index = datetime.strptime(sch[1], "%d.%m.%Y %H:%M").weekday()
+	weekday = days_of_week[index]
+	game = sch[0] + '\n' + weekday + ' ' + sch[1] + '\n' + sch[2]
 	time_left = (datetime.strptime(sch[1], "%d.%m.%Y %H:%M") - datetime.now()).total_seconds()/60
 	hours, minutes = divmod(time_left, 60)
 	left = "%02dч %02dмин"% (hours, minutes)
