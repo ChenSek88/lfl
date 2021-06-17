@@ -69,6 +69,7 @@ for hash, sch in schedule.items():
 		do_send_message(hash, game, 3)
  
 
+print('The work is completed' + '	' +  str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 '''def make_hash():
 	date = open('schedule.txt').readlines()[1].strip() + ':00'
 	now = datetime.now()
