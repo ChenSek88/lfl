@@ -13,9 +13,9 @@ greeting = []
 
 
 url = 'https://api.telegram.org/bot'
-chat_name = '@camelot_test'
-#chat_id = '-1001241312381'
-test_chat_id = '-1001308984669'
+#chat_name = '@camelot_test'
+chat_id = '-1001241312381'
+#test_chat_id = '-1001308984669'
 
 
 schedule = {}
@@ -23,7 +23,7 @@ statuses = {}
 
 
 def request_url(message):
-	return url + TOKEN + '/sendMessage?chat_id=' + test_chat_id + '&text=' + message
+	return url + TOKEN + '/sendMessage?chat_id=' + chat_id + '&text=' + message
 
 
 def send_message(message):
