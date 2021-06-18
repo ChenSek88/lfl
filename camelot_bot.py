@@ -6,6 +6,7 @@ from datetime import datetime
 import requests
 from config import config
 import hashlib
+import random
 
 
 TOKEN = config.get('TOKEN', 'token')
@@ -21,6 +22,8 @@ chat_id = '-1001241312381'
 schedule = {}
 statuses = {}
 days_of_week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+greetings2 = ['Мужчины!', 'Парни!', 'Рыцари!', 'Пацаны', 'Машины!']
+greetings3 = ['Але!', 'Про игру не забыл?', 'На игру собрался?', 'Пссс, парень!']
 
 
 def request_url(message):
@@ -36,9 +39,9 @@ def do_send_message(hash, game, state):
 	if state == 1:
 		send_message('Внимание! Новая игра: \n%s' % game)
 	elif state == 2:
-		send_message('Внимание!! Завтра игра: \n%s' % game)
+		send_message('%s Завтра игра: \n%s' % (random.choice(greetings2), game))
 	elif state == 3:
-		send_message('Внимание!!! Игра через %s\n%s' % (left, game))
+		send_message('%s Игра через %s\n%s' % (random.choice(greetings3), left, game))
 	open("statuses.txt", "a+").write("%s\t%s\n" % (hash, state))
 
 
