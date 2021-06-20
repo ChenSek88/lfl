@@ -63,12 +63,13 @@ for hash, sch in schedule.items():
 	game = sch[0] + '\n' + weekday + ' ' + sch[1] + '\n' + sch[2]
 	time_left = (datetime.strptime(sch[1], "%d.%m.%Y %H:%M") - datetime.now()).total_seconds()/60
 	hours, minutes = divmod(time_left, 60)
-	left = "%02dч %02dмин"% (hours, minutes)
+	msk_hours = hours - 3
+	left = "%02dч %02dмин"% (msk_hours, minutes)
 	if not hash in statuses or statuses[hash] == '0':
 		do_send_message(hash, game, 1)
-	elif statuses[hash] == '1' and hours <= 24:
+	elif statuses[hash] == '1' and msk_hours <= 24:
 		do_send_message(hash, game, 2)
-	elif statuses[hash] == '2' and hours <= 3:
+	elif statuses[hash] == '2' and msk_hours <= 3:
 		do_send_message(hash, game, 3)
  
 
