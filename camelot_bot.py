@@ -41,7 +41,7 @@ def do_send_message(hash, game, state):
 	elif state == 2:
 		send_message('%s Завтра игра: \n%s' % (random.choice(greetings2), game))
 	elif state == 3:
-		send_message('%s Игра через %s\n%s' % (random.choice(greetings3), left, game))
+		send_message('%s Игра через %s\n%s' % (random.choice(greetings3), time_left, game))
 	open("statuses.txt", "a+").write("%s\t%s\n" % (hash, state))
 
 
@@ -61,17 +61,16 @@ for hash, sch in schedule.items():
 	index = datetime.strptime(sch[1], "%d.%m.%Y %H:%M").weekday()
 	weekday = days_of_week[index]
 	game = sch[0] + '\n' + weekday + ' ' + sch[1] + '\n' + sch[2]
-	time_left = (datetime.strptime(sch[1], "%d.%m.%Y %H:%M") - datetime.now()).total_seconds()/60
-	hours, minutes = divmod(time_left, 60)
-	msk_hours = hours - 3
-	left = "%02dч %02dмин"% (msk_hours, minutes)
+	minutes_left = (datetime.strptime(sch[1], "%d.%m.%Y %H:%M") - datetime.now()).total_seconds()/60 - 180
+	hours, minutes = divmod(minutes_left, 60)
+	time_left = "%02dч %02dмин"% (hours, minutes)
 	if not hash in statuses or statuses[hash] == '0':
 		do_send_message(hash, game, 1)
-	elif statuses[hash] == '1' and msk_hours <= 24:
+	elif statuses[hash] == '1' and minutes_left <= 1440:
 		do_send_message(hash, game, 2)
-	elif statuses[hash] == '2' and msk_hours <= 3:
+	elif statuses[hash] == '2' and minutes_left <= 180:
 		do_send_message(hash, game, 3)
- 
+
 
 print('The work is completed' + '	' +  str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 '''def make_hash():
