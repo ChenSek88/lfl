@@ -18,8 +18,9 @@ chat_id = '-1001241312381'
 schedule = {}
 statuses = {}
 days_of_week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
-greetings2 = ['Мужчины!', 'Парни!', 'Рыцари!', 'Пацаны', 'Машины!']
-greetings3 = ['Але!', 'Про игру не забыл?', 'На игру собрался?', 'Пссс, парень!']
+greetings2 = ['Мужчины!', 'Парни!', 'Рыцари!', 'Пацаны!', 'Машины!']
+greetings3 = ['Але!', 'Про игру не забыл?', 'На игру собрался?', 'Пссс, парень!', 'Махаться будешь?']
+
 
 
 def request_url(message):
@@ -37,7 +38,9 @@ def do_send_message(hash, game, state):
 	elif state == 2:
 		send_message('%s Завтра игра: \n%s' % (random.choice(greetings2), game))
 	elif state == 3:
-		send_message('%s Игра через %s\n%s' % (random.choice(greetings3), time_left, game))
+		send_message('Махаться будешь?')
+		send_message('Игра через %s\n%s' % (time_left, game))
+		#send_message('%s Игра через %s\n%s' % (random.choice(greetings3), time_left, game))
 	open("statuses.txt", "a+").write("%s\t%s\n" % (hash, state))
 
 
