@@ -38,9 +38,7 @@ def do_send_message(hash, game, state):
 	elif state == 2:
 		send_message('%s Завтра игра: \n%s' % (random.choice(greetings2), game))
 	elif state == 3:
-		send_message('Махаться будешь?')
-		send_message('Игра через %s\n%s' % (time_left, game))
-		#send_message('%s Игра через %s\n%s' % (random.choice(greetings3), time_left, game))
+		send_message('%s Игра через %s\n%s' % (random.choice(greetings3), time_left, game))
 	open("statuses.txt", "a+").write("%s\t%s\n" % (hash, state))
 
 
