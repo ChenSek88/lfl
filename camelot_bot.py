@@ -9,9 +9,9 @@ import random
 TOKEN = config.get('TOKEN', 'token')
 
 
-url = 'https://api.telegram.org/bot'
+api_url = 'https://api.telegram.org/bot'
 #chat_name = '@camelot_test'
-chat_id = '-1001241312381'
+chat_id = '-1001500436339'
 #test_chat_id = '-1001308984669'
 
 
@@ -22,9 +22,8 @@ greetings2 = ['Мужчины!', 'Парни!', 'Рыцари!', 'Пацаны!'
 greetings3 = ['Але!', 'Про игру не забыл?', 'На игру собрался?', 'Пссс, парень!', 'Махаться будешь?']
 
 
-
 def request_url(message):
-	return url + TOKEN + '/sendMessage?chat_id=' + chat_id + '&text=' + message
+	return api_url + TOKEN + '/sendMessage?chat_id=' + chat_id + '&text=' + message
 
 
 def send_message(message):
