@@ -11,7 +11,7 @@ TOKEN = config.get('TOKEN', 'token')
 
 api_url = 'https://api.telegram.org/bot'
 #chat_name = '@camelot_test'
-chat_id = '-1001500436339'
+chat_id = '-1001190912505'
 #test_chat_id = '-1001308984669'
 
 
