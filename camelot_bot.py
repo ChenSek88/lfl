@@ -7,7 +7,7 @@ import random
 import json
 
 
-TOKEN = config.get('TOKEN', 'token')
+TOKEN = config.get('TOKEN', 'camelot_token')
 
 
 api_url = 'https://api.telegram.org/bot'
@@ -36,13 +36,13 @@ def unpin_all_messages():
 	response = requests.request("GET", api_url + TOKEN + '/unpinChatMessage?chat_id=' + chat_id)
 
 
-def request_url(message):
+def send_message_url(message):
 	return api_url + TOKEN + '/sendMessage?chat_id=' + chat_id + '&text=' + message
 
 
 def send_message(message):
 	global message_id
-	response = requests.request("GET", request_url(message))
+	response = requests.request("GET", send_message_url(message))
 	result = json.loads(response.text)
 	message_id = result['result']['message_id']
 
