@@ -31,7 +31,7 @@ def get_kdk_date():
 		date = i.get_text().split('.')
 		f_date = (date[2] + '.' + date[1] + '.' +date[0])
 		if f_date >= '2021.09.09':
-			send_message('New kdk decision!')
+			send_message('New kdk decision! See https://lfl.ru/sever/kdk')
 
 
 get_kdk_date()
