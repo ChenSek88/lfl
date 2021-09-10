@@ -11,6 +11,7 @@ TOKEN = config.get('TOKEN', 'camelot_token')
 chat_id = "-1001190912505"
 #test_chat_id = "-1001361360883"
 
+
 api_url = "https://api.telegram.org/bot"
 #kdk_url = "https://lfl.ru/sever/kdk"
 players_url = "https://lfl.ru/club2356/players_list"
@@ -51,16 +52,14 @@ def get_players_bd():
 		return players_dict
 
 
-get_players = get_players_bd()
-
-
 def happy_birthday(message):
 	for player in get_players:
-		print(get_players[player])
 		if get_players[player] == now:
 			send_message('Сегодня день рождения празднует %s! %s' % (player, message)) 
 
 
+get_players()
+get_players = get_players_bd()
 happy_birthday(message)
 
 
