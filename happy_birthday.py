@@ -6,6 +6,7 @@ from config import config
 import datetime
 
 
+HOME_DIR = config.get('home_dir', 'path')
 TOKEN = config.get('TOKEN', 'camelot_token')
 chat_id = "-1001190912505"
 #test_chat_id = "-1001361360883"
@@ -31,14 +32,14 @@ def send_message(message):
 
 
 def get_players():
-	with open('/home/ts/Documents/players.txt', 'w') as players:
+	with open(HOME_DIR + 'players.txt', 'w') as players:
 		table = requests.request("GET", players_url, headers=headers, timeout=60)
 		table.encoding = table.apparent_encoding
 		players.write(table.text)
 		
 
 def get_players_bd():
-	with open('/home/ts/Documents/players.txt', 'r') as players_bd:
+	with open(HOME_DIR + 'players.txt', 'r') as players_bd:
 		soup = BeautifulSoup(players_bd, 'lxml')
 		players = soup.find_all(attrs={"class": "player_title"})
 		players_dict = {}
