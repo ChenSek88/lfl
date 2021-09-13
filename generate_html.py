@@ -199,11 +199,8 @@ def calendar_table():
 						urllib.request.install_opener(opener)
 						urllib.request.urlretrieve(host_img, outpath)
 						urllib.request.urlretrieve(guest_img, outpath2)
-			return tour_list
-		else:
-			table = soup.find_all('div')
-			table[1]['class'] == ['empty-list']
-			tour_list = """<tr class="row">Ближайших матчей нет</tr>"""
+				else:
+					return tour_list
 			return tour_list
 
 
