@@ -13,7 +13,7 @@ TOKEN = config.get('TOKEN', 'camelot_token')
 api_url = 'https://api.telegram.org/bot'
 #chat_name = '@camelot_test'
 chat_id = '-1001190912505'
-#test_chat_id = '-1001308984669'
+#test_chat_id = '-1001361360883'
 message_id = ''
 
 
@@ -77,15 +77,13 @@ for hash, sch in schedule.items():
 	hours, minutes = divmod(minutes_left, 60)
 	time_left = "%02dч %02dмин"% (hours, minutes)
 	if not hash in statuses or statuses[hash] == '0':
-		unpin_all_messages()
 		do_send_message(hash, game, 1)
-		pin_message(message_id)
 	elif statuses[hash] == '1' and minutes_left <= 1440:
-		unpin_all_messages()
+		#unpin_all_messages()
 		do_send_message(hash, game, 2)
 		pin_message(message_id)
 	elif statuses[hash] == '2' and minutes_left <= 180:
-		unpin_all_messages()
+		#unpin_all_messages()
 		do_send_message(hash, game, 3)
 		pin_message(message_id)
 
