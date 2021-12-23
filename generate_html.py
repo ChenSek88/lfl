@@ -17,7 +17,7 @@ os.mkdir(HOME_DIR + 'temp_tables/')
 TEMP_DIR = HOME_DIR + 'temp_tables/'
 
 tournament_stats_url = "https://lfl.ru/?ajax=1&method=tournament_stats_table&tournament_id=7190&club_id=2356&season_id=41"
-tournament_calendar_url= "https://lfl.ru/?ajax=1&method=tournament_calendar_table&tournament_id=7190&club_id=2356&season_id=41"
+tournament_calendar_url= "https://lfl.ru/?ajax=1&method=tournament_calendar_table&tournament_id=0&club_id=2356&season_id=41"
 players_stats_url = "https://lfl.ru/?ajax=1&method=tournament_squads_table&tournament_id=7190&club_id=2356&season_id=41"
 disqualifications_url= "https://lfl.ru/?ajax=1&mode=new_format&method=tournament_disqualifications_table&tournament_id=7190&club_id=2356&season_id=41"
 games_results_url = "https://lfl.ru/?ajax=1&method=tournament_resault_table&tournament_id=0&club_id=2356&season_id=41"
