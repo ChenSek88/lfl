@@ -205,7 +205,7 @@ def calendar_table():
 
 
 #generate players table
-#@catch_exception
+@catch_exception
 def players_table():
 	with open(TEMP_DIR + 'players_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
@@ -265,7 +265,7 @@ def players_table():
 
 
 #generate disqual table
-#@catch_exception
+@catch_exception
 def disqual_table():
 	with open(TEMP_DIR + 'disqual_table') as table:
 		soup = BeautifulSoup(table, 'lxml')
