@@ -38,8 +38,8 @@ def catch_exception(func):
 			return func(*args)
 		except:
 			print('Something went wrong!' + '	' +  str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
-			shutil.rmtree(HOME_DIR + 'temp_tables')
-			sys.exit()
+			#shutil.rmtree(HOME_DIR + 'temp_tables')
+			#sys.exit()
 	return wrapper
 
 
