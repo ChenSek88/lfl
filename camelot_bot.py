@@ -73,9 +73,10 @@ for hash, sch in schedule.items():
 	index = datetime.strptime(sch[1], "%d.%m.%Y %H:%M").weekday()
 	weekday = days_of_week[index]
 	game = sch[0] + '\n' + weekday + ' ' + sch[1] + '\n' + sch[2]
-	minutes_left = (datetime.strptime(sch[1], "%d.%m.%Y %H:%M") - datetime.now()).total_seconds()/60 - 180
+	minutes_left = (datetime.strptime(sch[1], "%d.%m.%Y %H:%M") - datetime.now()).total_seconds()/60
 	hours, minutes = divmod(minutes_left, 60)
 	time_left = "%02dч %02dмин"% (hours, minutes)
+	print(time_left)
 	if not hash in statuses or statuses[hash] == '0':
 		do_send_message(hash, game, 1)
 	elif statuses[hash] == '1' and minutes_left <= 1440:
@@ -83,9 +84,10 @@ for hash, sch in schedule.items():
 		do_send_message(hash, game, 2)
 		pin_message(message_id)
 	elif statuses[hash] == '2' and minutes_left <= 180:
+		print('ok')
 		#unpin_all_messages()
-		do_send_message(hash, game, 3)
-		pin_message(message_id)
+		#do_send_message(hash, game, 3)
+		#pin_message(message_id)
 
 
 print('The work is completed' + '	' +  str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
